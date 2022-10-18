@@ -60,8 +60,7 @@ def delete_all_rules(rules):
 def set_rules():
     # You can adjust the rules if needed
     sample_rules = [
-        # {"value": "(@fewBOT_)", "tag": "fewBOT mention"},
-        {"value": "(@fewBOT_ -from:fewBOT_)"},
+        {"value": "(@fewBOT21 -from:fewBOT21 -is:retweet)"},
     ]
     payload = {"add": sample_rules}
     # print(f"payload is {payload}")
@@ -103,14 +102,16 @@ def get_stream(set):
             json_response = json.loads(response_line)
             print(f"json dumps for get_stream: {json.dumps(json_response, indent=4, sort_keys=True)}")
             tweet_message = json_response["data"]["text"]
-            tweet_message = tweet_message[tweet_message.lower().find("@fewbot_")+9:]
-            replace_dictionary = {"?":"",",":"",":":"","!":"","you":"I"}
-            for element_to_replace in replace_dictionary:
-                tweet_message = tweet_message.replace(element_to_replace,replace_dictionary[element_to_replace])
-            tweet_message = tweet_message + "? Few"
+            if tweet_message.strip()[0:len(tweet_message)-9] == (tweet_message.strip()[0:tweet_message.lower().find("@fewbot21")-8]):
+                tweet_message = "Few"
+            else:
+                tweet_message = tweet_message[tweet_message.lower().find("@fewbot21")+10:]
+                replace_dictionary = {"?":"",",":"",":":"","!":"","you":"I"}
+                for element_to_replace in replace_dictionary:
+                    tweet_message = tweet_message.replace(element_to_replace,replace_dictionary[element_to_replace])
+                tweet_message = tweet_message.strip() + "? Few"
             tweet_id = json_response["data"]["id"]
             tweepy_send_tweet(tweet_message,tweet_id)
-
 
 def main():
     rules = get_rules()

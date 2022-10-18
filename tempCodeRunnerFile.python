@@ -1,8 +1,14 @@
-tweet_message = "yo @fewbot_ did you know bitcoin is going to be the world's reserve asset?"
-print(tweet_message.lower().find("@fewbot_"))
-tweet_message = tweet_message[tweet_message.find("@fewbot_")+9:] + "? Few"
-tweet_message = "did you know that bitcoin will become the world's reserve asset?"
-replace_dictionary = {"?":"",",":"",":":"","!":"","you":"I"}
-for element_to_replace in replace_dictionary:
-    tweet_message = tweet_message.replace(element_to_replace,replace_dictionary[element_to_replace])
+# tweet_message = "bunch of text check this out bla bla bla \n\n bla bla bla \n @fewBOT21"
+tweet_message = "@FewBOT21 LET'S SWITCH TO POS"
+# tweet_message = "@fewBOT21 bunch of text check this out bla bla bla \n\n bla bla bla"
+if len(tweet_message)-9 == len(tweet_message.strip()[0:tweet_message.lower().find("@fewBOT21")-8]):
+    tweet_message = "Few"
+else:
+    tweet_message = tweet_message[tweet_message.lower().find("@fewbot21")+10:]
+    replace_dictionary = {"?":"",",":"",":":"","!":"","you":"I"}
+    for element_to_replace in replace_dictionary:
+        tweet_message = tweet_message.replace(element_to_replace,replace_dictionary[element_to_replace])
+    tweet_message = tweet_message + "? Few"
+# tweet_message = json_response["data"]["text"]
 print(tweet_message)
+# tweet_id = json_response["data"]["id"]
