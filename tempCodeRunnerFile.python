@@ -1,0 +1,8 @@
+tweet_message = "yo @fewbot_ did you know bitcoin is going to be the world's reserve asset?"
+print(tweet_message.lower().find("@fewbot_"))
+tweet_message = tweet_message[tweet_message.find("@fewbot_")+9:] + "? Few"
+tweet_message = "did you know that bitcoin will become the world's reserve asset?"
+replace_dictionary = {"?":"",",":"",":":"","!":"","you":"I"}
+for element_to_replace in replace_dictionary:
+    tweet_message = tweet_message.replace(element_to_replace,replace_dictionary[element_to_replace])
+print(tweet_message)
