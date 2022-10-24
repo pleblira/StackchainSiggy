@@ -62,7 +62,6 @@ def delete_all_rules(rules):
 
 
 def set_rules():
-    # You can adjust the rules if needed
     sample_rules = [
         {"value": "((#stackchain OR #stackchaintip OR #stackjoin) -from:fewBOT21 -is:retweet)"},
         # {"value": "(@fewBOT21 -from:fewBOT21 -is:retweet)"},
@@ -116,9 +115,13 @@ def get_stream(set):
             tweet_n = False
 
             while not tweet_y and not tweet_n:
-                if throttle_list == []:
-                    print("throttle_list is blank so tweet == true")
-                    tweet_y = True
+                # additional check for hashtag on text of the tweet (the API has been serving replies to the actual hashtag tweet, which does not apply)
+                if "#stackchain" not in json_response['data']['text'].lower() and "#stackchaintip" not in json_response['data']['text'].lower() and "#stackjoin" not in json_response['data']['text'].lower():
+                    print("switching tweet_n to True since text doesn't contain hashtags")
+                    tweet_n = True
+                # if throttle_list == []:
+                    # print("throttle_list is blank so not doing anything")
+                    # tweet_n = False
                 for throttle_item in throttle_list:
                     print(f"\nthis is an item from throttle_list: {throttle_item}")
                     if json_response['data']['author_id'] in throttle_item:
@@ -194,7 +197,7 @@ def tweepy_send_tweet(tweet_message,tweet_id, json_response):
 def get_reply_user_ids(json_response):
     exclude_reply_user_ids = []
     for item in json_response['includes']['users']:
-        print(json_response['data']['author_id'])
+        # print(json_response['data']['author_id'])
         if item['id'] != json_response['data']['author_id']:
             exclude_reply_user_ids.append(item['id'])
     if exclude_reply_user_ids == []:

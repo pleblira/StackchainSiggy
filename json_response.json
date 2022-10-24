@@ -1,0 +1,30 @@
+{
+    "data": {
+        "author_id": "1439679732891754504",
+        "edit_history_tweet_ids": [
+            "1584635894543179776"
+        ],
+        "id": "1584635894543179776",
+        "text": "@derekmross Replying to tweet with stackchain hashtag but not adding the stackchain hashtag. \n\nThe bot shouldn't reply this time (added an additional check to the actual tweet text)."
+    },
+    "includes": {
+        "users": [
+            {
+                "id": "1439679732891754504",
+                "name": "pleblira #154 #171",
+                "username": "pleblira"
+            },
+            {
+                "id": "9768732",
+                "name": "Derek Ross \u26d3\ufe0f1022:8",
+                "username": "derekmross"
+            }
+        ]
+    },
+    "matching_rules": [
+        {
+            "id": "1584635718550396932",
+            "tag": ""
+        }
+    ]
+}
