@@ -64,7 +64,7 @@ def get_stream(set):
 
             while not tweet_y and not tweet_n:
                 # additional check for hashtag on text of the tweet (the API has been serving replies to the actual hashtag tweet, which does not apply)
-                if "#stackchain" not in json_response['data']['text'].lower() and "#stackchaintip" not in json_response['data']['text'].lower() and "#stackjoin" not in json_response['data']['text'].lower():
+                if "#stackchain" not in json_response['data']['text'].lower() and "#stackchaintip" not in json_response['data']['text'].lower() and "#stackjoin" not in json_response['data']['text'].lower() and "#pbstack" not in json_response['data']['text'].lower():
                     print("switching tweet_n to True since text doesn't contain hashtags")
                     tweet_n = True
                 for throttle_item in throttle_list:

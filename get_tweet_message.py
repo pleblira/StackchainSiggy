@@ -29,6 +29,9 @@ def get_tweet_message(json_response,tweet_message):
     elif "#stackchaintip" in json_response['data']['text'].lower():
         print("found stackchaintip on tweet, set to stackchaintip.json")
         tweets_json_filename = "stackchaintip.json"
+    elif "#pbstack" in json_response['data']['text'].lower():
+        print("found pbstack on tweet, set to pbstack.json")
+        tweets_json_filename = "pbstack.json"
     else:
         print("didn't find either, so stackchain")
         tweets_json_filename = "stackchain.json"
