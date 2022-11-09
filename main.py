@@ -26,7 +26,6 @@ bearer_token = os.environ.get("BEARER_TOKEN")
 
 throttle_time = 60
 
-
 def get_stream(set):
     response = requests.get(
         "https://api.twitter.com/2/tweets/search/stream?expansions=author_id", auth=bearer_oauth, stream=True,

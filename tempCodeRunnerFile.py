@@ -1,2 +1,1 @@
-        # for tweet in tweet_list:
-        #     print(tweet)
+json_response['data']['text'].lower()
