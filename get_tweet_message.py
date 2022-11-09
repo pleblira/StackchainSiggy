@@ -28,7 +28,7 @@ def get_tweet_message(json_response,tweet_message):
     #     # tweet_message = "Fetching the tip is my favorite!!!\nIf I ever lose the tip I get sad. But I can usually find it @StackchainSig"
     elif "#stackchain" in json_response['data']['text'].lower():
         print("found stackchain on tweet, set to stackchain.json")
-        tweets_json_filename = "stackchain.json, set to stackjoin.json"
+        tweets_json_filename = "stackchain.json"
     #     # tweet_message = "Hello friend! I'm so happy to see you!! Come hang out with Stackchainers at @StackchainSig"
     else:
         print("didn't find either, so stackjoin")
