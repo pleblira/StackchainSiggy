@@ -30,7 +30,7 @@ def get_tweet_message(json_response,tweet_message):
         print("found stackchain on tweet, set to stackchain.json")
         tweets_json_filename = "stackchain.json, set to stackjoin.json"
     #     # tweet_message = "Hello friend! I'm so happy to see you!! Come hang out with Stackchainers at @StackchainSig"
-    elif "#stackjoin" in json_response['data']['text'].lower():
+    else:
         print("didn't find either, so stackjoin")
         tweets_json_filename = "stackjoin.json"
     # downloading tweet list from S3 bucket
