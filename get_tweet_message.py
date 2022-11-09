@@ -22,17 +22,16 @@ AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 
 def get_tweet_message(json_response,tweet_message):
     print(f"json_response['data']['text'] is {json_response['data']['text']}")
-    if "#stackchaintip" in json_response['data']['text'].lower():
+    if "#stackjoin" in json_response['data']['text'].lower():
+        print("found stackjoin on tweet, set to stackjoin.json")
+        tweets_json_filename = "stackjoin.json"
+        # tweet_message = "Fetching the tip is my favorite!!!\nIf I ever lose the tip I get sad. But I can usually find it @StackchainSig"
+    elif "#stackchaintip" in json_response['data']['text'].lower():
         print("found stackchaintip on tweet, set to stackchaintip.json")
         tweets_json_filename = "stackchaintip.json"
-    #     # tweet_message = "Fetching the tip is my favorite!!!\nIf I ever lose the tip I get sad. But I can usually find it @StackchainSig"
-    elif "#stackchain" in json_response['data']['text'].lower():
-        print("found stackchain on tweet, set to stackchain.json")
-        tweets_json_filename = "stackchain.json"
-    #     # tweet_message = "Hello friend! I'm so happy to see you!! Come hang out with Stackchainers at @StackchainSig"
     else:
-        print("didn't find either, so stackjoin")
-        tweets_json_filename = "stackjoin.json"
+        print("didn't find either, so stackchain")
+        tweets_json_filename = "stackchain.json"
     # downloading tweet list from S3 bucket
     boto3.client('s3').download_file('pleblira', tweets_json_filename, 'assets/' + tweets_json_filename)
 
