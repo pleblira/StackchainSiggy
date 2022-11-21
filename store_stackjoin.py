@@ -35,19 +35,22 @@ def store_stackjoin(json_response):
             if item['type'] == "animated_gif":
                 print('found animated gif')
                 image_url = get_tweet_gif_url(tweet_id, "gif")
+                image_preview_url = get_tweet_gif_url(tweet_id, "video")
                 print(f"the image URL is {image_url}")
             elif item['type'] == "video":
                 print('found video')
                 image_url = get_tweet_gif_url(tweet_id, "video")
+                image_preview_url = get_tweet_gif_url(tweet_id, "video")
             else:
                 image_url = json_response["includes"]["media"][index]["url"]
+                image_preview_url = image_url
                 print(f"the image URL is {image_url}")
             r = requests.get(image_url, allow_redirects=True)
             # open("stackjoin_tweets_temp/"+tweet_id+"_image_"+index+1+".jpg",'wb').write(r.content)
             filetype = image_url.rsplit('/', 1)[1].rsplit('.', 1)[1]
             open("stackjoin_tweets_temp/"+tweet_id+"_image_"+str(index+1)+"."+filetype,'wb').write(r.content)
             image_url_dict.append(image_url)
-            img_src_dict.append(f"<a href=\"{image_url}\" target=\"_blank\"><img src=\"{image_url}\" style=\"max-width:100px;\"></a>")
+            img_src_dict.append(f"<a href=\"{image_url}\" target=\"_blank\"><img src=\"{image_preview_url}\" style=\"max-width:100px;\"></a>")
             print(image_url_dict)
     else:
         print("no image")
@@ -76,9 +79,14 @@ def store_stackjoin(json_response):
 
 
     # turning stackjoin_tweets into html table data
+    print(f"this is stackjoin tweets: {json.dumps(stackjoin_tweets,indent=4)}")
     stackjoin_tweets_table_data = ""
     for index, tweet in enumerate(stackjoin_tweets):
-        stackjoin_tweets_table_data += (f"<tr><td>{index+1}</td><td>{tweet[tweet_id]}</td><td>{tweet[author_handle]}</td><td>{tweet[author_id]}</td><td>{tweet[tweet_message]}</td><td>{tweet[image_url_dict]}</td><td>{str(tweet[img_src_dict]).translate({39: None,91: None, 93: None, 44: None})}")
+        if tweet['image_url_dict'] == []:
+            tweet['image_url_dict'] = "no image"
+        if tweet['img_src_dict'] == []:
+            tweet['img_src_dict'] = "no image"
+        stackjoin_tweets_table_data += (f"<tr><td>{index+1}</td><td>{tweet['tweet_id']}</td><td>{tweet['author_handle']}</td><td>{tweet['author_id']}</td><td>{tweet['tweet_message']}</td><td>{str(tweet['image_url_dict'])}</td><td>{str(tweet['img_src_dict']).translate({39: None,91: None, 93: None, 44: None})}")
     print(stackjoin_tweets_table_data)
     with open("stackjoin_tweets/stackjoin_tweets_table_data.html",'w') as openfile:
         openfile.write(stackjoin_tweets_table_data)

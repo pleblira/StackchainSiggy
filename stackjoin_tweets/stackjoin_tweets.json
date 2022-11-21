@@ -1,1 +1,46 @@
-[]
+[
+    {
+        "tweet_id": "1594521369374597120",
+        "author_handle": "jusabitcoiner",
+        "author_id": "1584380164103872514",
+        "tweet_message": "#stackjoin no media",
+        "image_url_dict": [],
+        "img_src_dict": []
+    },
+    {
+        "tweet_id": "1594521473393127424",
+        "author_handle": "jusabitcoiner",
+        "author_id": "1584380164103872514",
+        "tweet_message": "#stackjoin with image https://t.co/PwAnq9JkKI",
+        "image_url_dict": [
+            "https://pbs.twimg.com/media/FiDg06FX0AAEwXy.jpg"
+        ],
+        "img_src_dict": [
+            "<a href=\"https://pbs.twimg.com/media/FiDg06FX0AAEwXy.jpg\" target=\"_blank\"><img src=\"https://pbs.twimg.com/media/FiDg06FX0AAEwXy.jpg\" style=\"max-width:100px;\"></a>"
+        ]
+    },
+    {
+        "tweet_id": "1594521562127941634",
+        "author_handle": "jusabitcoiner",
+        "author_id": "1584380164103872514",
+        "tweet_message": "#stackjoin with gif https://t.co/qBEXpyByF2",
+        "image_url_dict": [
+            "https://video.twimg.com/tweet_video/FiDg5zbXoAMULIy.mp4"
+        ],
+        "img_src_dict": [
+            "<a href=\"https://video.twimg.com/tweet_video/FiDg5zbXoAMULIy.mp4\" target=\"_blank\"><img src=\"https://pbs.twimg.com/tweet_video_thumb/FiDg5zbXoAMULIy.jpg\" style=\"max-width:100px;\"></a>"
+        ]
+    },
+    {
+        "tweet_id": "1594521655253999616",
+        "author_handle": "jusabitcoiner",
+        "author_id": "1584380164103872514",
+        "tweet_message": "#stackjoin with video https://t.co/MMF1TDA5Ah",
+        "image_url_dict": [
+            "https://pbs.twimg.com/ext_tw_video_thumb/1594521641287127040/pu/img/-23o8jPNpJsA3Ed-.jpg"
+        ],
+        "img_src_dict": [
+            "<a href=\"https://pbs.twimg.com/ext_tw_video_thumb/1594521641287127040/pu/img/-23o8jPNpJsA3Ed-.jpg\" target=\"_blank\"><img src=\"https://pbs.twimg.com/ext_tw_video_thumb/1594521641287127040/pu/img/-23o8jPNpJsA3Ed-.jpg\" style=\"max-width:100px;\"></a>"
+        ]
+    }
+]
