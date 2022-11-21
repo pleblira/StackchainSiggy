@@ -78,7 +78,7 @@ def store_stackjoin(json_response):
     # turning stackjoin_tweets into html table data
     stackjoin_tweets_table_data = ""
     for index, tweet in enumerate(stackjoin_tweets):
-        stackjoin_tweets_table_data += (f"<tr><td>{index+1}</td><td>{tweet[tweet_id]}</td><td>{tweet[author_handle]}</td><td>{tweet[author_id]}</td><td>{tweet[tweet_message]}</td><td>{tweet[image_url_dict]}</td><td>{tweet[str(img_src_dict)].translate({39: None,91: None, 93: None, 44: None})}")
+        stackjoin_tweets_table_data += (f"<tr><td>{index+1}</td><td>{tweet[tweet_id]}</td><td>{tweet[author_handle]}</td><td>{tweet[author_id]}</td><td>{tweet[tweet_message]}</td><td>{tweet[image_url_dict]}</td><td>{str(tweet[img_src_dict]).translate({39: None,91: None, 93: None, 44: None})}")
     print(stackjoin_tweets_table_data)
     with open("stackjoin_tweets/stackjoin_tweets_table_data.html",'w') as openfile:
         openfile.write(stackjoin_tweets_table_data)
