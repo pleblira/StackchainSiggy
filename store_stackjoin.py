@@ -86,7 +86,7 @@ def store_stackjoin(json_response):
             tweet['image_url_dict'] = "no image"
         if tweet['img_src_dict'] == []:
             tweet['img_src_dict'] = "no image"
-        stackjoin_tweets_table_data += (f"<tr><td>{index+1}</td><td>{tweet['tweet_id']}</td><td>{tweet['author_handle']}</td><td>{tweet['author_id']}</td><td>{tweet['tweet_message']}</td><td>{str(tweet['image_url_dict'])}</td><td>{str(tweet['img_src_dict']).translate({39: None,91: None, 93: None, 44: None})}")
+        stackjoin_tweets_table_data += (f"<tr><td>{index+1}</td><td><a href=\"www.twitter.com/pleblira/status/{tweet['tweet_id']}\">{tweet['tweet_id']}</a></td><td><a href=\"https://twitter.com/{tweet['author_handle']}\" target=\"_blank\">{tweet['author_handle']}</a></td><td>{tweet['author_id']}</td><td>{tweet['tweet_message']}</td><td>{str(tweet['image_url_dict'])}</td><td>{str(tweet['img_src_dict']).translate({39: None,91: None, 93: None, 44: None})}")
     print(stackjoin_tweets_table_data)
     with open("stackjoin_tweets/stackjoin_tweets_table_data.html",'w') as openfile:
         openfile.write(stackjoin_tweets_table_data)
