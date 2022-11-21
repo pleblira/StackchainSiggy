@@ -1,46 +1,50 @@
 [
     {
-        "tweet_id": "1594521369374597120",
+        "tweet_id": "1594523971554271232",
         "author_handle": "jusabitcoiner",
         "author_id": "1584380164103872514",
-        "tweet_message": "#stackjoin no media",
+        "tweet_message": "#stackjoin no media 6",
         "image_url_dict": [],
         "img_src_dict": []
     },
     {
-        "tweet_id": "1594521473393127424",
+        "tweet_id": "1594526946020540417",
         "author_handle": "jusabitcoiner",
         "author_id": "1584380164103872514",
-        "tweet_message": "#stackjoin with image https://t.co/PwAnq9JkKI",
+        "tweet_message": "#stackjoin test",
+        "image_url_dict": [],
+        "img_src_dict": []
+    },
+    {
+        "tweet_id": "1594527863545307136",
+        "author_handle": "jusabitcoiner",
+        "author_id": "1584380164103872514",
+        "tweet_message": "#stackjoin and say no to censorable shitcoins https://t.co/CMTnwYucUb",
         "image_url_dict": [
-            "https://pbs.twimg.com/media/FiDg06FX0AAEwXy.jpg"
+            "https://pbs.twimg.com/media/FiDmo1nX0AAOzSO.jpg"
         ],
         "img_src_dict": [
-            "<a href=\"https://pbs.twimg.com/media/FiDg06FX0AAEwXy.jpg\" target=\"_blank\"><img src=\"https://pbs.twimg.com/media/FiDg06FX0AAEwXy.jpg\" style=\"max-width:100px;\"></a>"
+            "<a href=\"https://pbs.twimg.com/media/FiDmo1nX0AAOzSO.jpg\" target=\"_blank\"><img src=\"https://pbs.twimg.com/media/FiDmo1nX0AAOzSO.jpg\" style=\"max-width:100px;\"></a>"
         ]
     },
     {
-        "tweet_id": "1594521562127941634",
+        "tweet_id": "1594533245869228035",
         "author_handle": "jusabitcoiner",
         "author_id": "1584380164103872514",
-        "tweet_message": "#stackjoin with gif https://t.co/qBEXpyByF2",
-        "image_url_dict": [
-            "https://video.twimg.com/tweet_video/FiDg5zbXoAMULIy.mp4"
-        ],
-        "img_src_dict": [
-            "<a href=\"https://video.twimg.com/tweet_video/FiDg5zbXoAMULIy.mp4\" target=\"_blank\"><img src=\"https://pbs.twimg.com/tweet_video_thumb/FiDg5zbXoAMULIy.jpg\" style=\"max-width:100px;\"></a>"
-        ]
+        "tweet_message": "#stackjoin test123123",
+        "image_url_dict": [],
+        "img_src_dict": []
     },
     {
-        "tweet_id": "1594521655253999616",
+        "tweet_id": "1594533481387884545",
         "author_handle": "jusabitcoiner",
         "author_id": "1584380164103872514",
-        "tweet_message": "#stackjoin with video https://t.co/MMF1TDA5Ah",
+        "tweet_message": "#stackjoin is the power UP https://t.co/TmaC8RIk5e",
         "image_url_dict": [
-            "https://pbs.twimg.com/ext_tw_video_thumb/1594521641287127040/pu/img/-23o8jPNpJsA3Ed-.jpg"
+            "https://video.twimg.com/tweet_video/FiDrvMCX0AAijES.mp4"
         ],
         "img_src_dict": [
-            "<a href=\"https://pbs.twimg.com/ext_tw_video_thumb/1594521641287127040/pu/img/-23o8jPNpJsA3Ed-.jpg\" target=\"_blank\"><img src=\"https://pbs.twimg.com/ext_tw_video_thumb/1594521641287127040/pu/img/-23o8jPNpJsA3Ed-.jpg\" style=\"max-width:100px;\"></a>"
+            "<a href=\"https://video.twimg.com/tweet_video/FiDrvMCX0AAijES.mp4\" target=\"_blank\"><img src=\"https://pbs.twimg.com/tweet_video_thumb/FiDrvMCX0AAijES.jpg\" style=\"max-width:100px;\"></a>"
         ]
     }
 ]
