@@ -32,7 +32,7 @@ def store_stackjoin(json_response):
     img_src_dict = []
     if "media" in json_response["includes"]:
         for index, item in enumerate(json_response['includes']['media']):
-            if item['type'] == "animated_gif":
+            if item['type'] == "animated_gif" or item['type'] == "video":
                 print('found animated gif')
                 image_url = get_tweet_gif_url(tweet_id)
                 print(f"the image URL is {image_url}")

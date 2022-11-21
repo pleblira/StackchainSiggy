@@ -55,8 +55,9 @@ def get_tweet_gif_url(tweet_id):
     json_response = connect_to_endpoint(url)
     preview_image_url = json_response['includes']['media'][0]['preview_image_url']
     gif_url = 'https://video.twimg.com/tweet_video/'+str(preview_image_url.rsplit('/', 1)[1].split('.', 1)[0])+".mp4"
+    print(json_response)
     return gif_url
     # print(json.dumps(json_response, indent=4, sort_keys=True))
 
 if __name__ == "__main__":
-    get_tweet_gif_url("1594472014072643585")
+    get_tweet_gif_url("1594507984939253761")
