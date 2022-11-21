@@ -24,7 +24,7 @@ def store_stackjoin(json_response):
         # print (item)
         # print (json_response['data']['author_id'])
         # if ['id'] == json_response['data']['author_id']:
-        if item['id'] == '1584380164103872514':
+        if item['id'] == author_id:
             print (item['id'])
             author_handle = item['username']
     print(f"the author handle is {author_handle}")  
