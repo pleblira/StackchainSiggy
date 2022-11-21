@@ -50,10 +50,12 @@ def connect_to_endpoint(url):
     return response.json()
 
 
-def get_tweet_gif_url(tweet_id):
+def get_tweet_gif_url(tweet_id, gif_or_video):
     url = create_url(tweet_id)
     json_response = connect_to_endpoint(url)
     preview_image_url = json_response['includes']['media'][0]['preview_image_url']
+    if gif_or_video == "video":
+        return preview_image_url
     gif_url = 'https://video.twimg.com/tweet_video/'+str(preview_image_url.rsplit('/', 1)[1].split('.', 1)[0])+".mp4"
     print(json_response)
     return gif_url

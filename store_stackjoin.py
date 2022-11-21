@@ -32,10 +32,13 @@ def store_stackjoin(json_response):
     img_src_dict = []
     if "media" in json_response["includes"]:
         for index, item in enumerate(json_response['includes']['media']):
-            if item['type'] == "animated_gif" or item['type'] == "video":
+            if item['type'] == "animated_gif":
                 print('found animated gif')
-                image_url = get_tweet_gif_url(tweet_id)
+                image_url = get_tweet_gif_url(tweet_id, "gif")
                 print(f"the image URL is {image_url}")
+            elif item['type'] == "video":
+                print('found video')
+                image_url = get_tweet_gif_url(tweet_id, "video")
             else:
                 image_url = json_response["includes"]["media"][index]["url"]
                 print(f"the image URL is {image_url}")
@@ -48,7 +51,6 @@ def store_stackjoin(json_response):
             print(image_url_dict)
     else:
         print("no image")
-    
     
     boto3.client('s3').download_file('pleblira', 'stackjoin_tweets/stackjoin_tweets.json', 'stackjoin_tweets/stackjoin_tweets.json')
 
