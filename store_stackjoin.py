@@ -3,6 +3,8 @@ import requests
 from get_tweet_gif_url import *
 from jinja2 import Template
 import boto3
+from remove_mentions_from_tweet_message import *
+from datetime import datetime
 
 ENV_FILE = find_dotenv()
 if ENV_FILE:
@@ -19,7 +21,10 @@ def store_stackjoin(json_response):
         # json_response = json.load(f)
     tweet_id = json_response["data"]["id"]
     author_id = json_response["data"]["author_id"]
-    tweet_message = json_response["data"]["text"]
+    tweet_message = remove_mentions_from_tweet_message(json_response["data"]["text"])
+    tweet_timestamp = str(f"{datetime.timestamp(datetime.now().replace(microsecond=0)):.0f}")
+    tweet_datetimeISO = datetime.utcnow().isoformat()
+    tweet_datetimeISO = tweet_datetimeISO[0:tweet_datetimeISO.find(".")]
     for item in json_response['includes']['users']:
         # print (item)
         # print (json_response['data']['author_id'])
@@ -65,7 +70,7 @@ def store_stackjoin(json_response):
         except:
             print("except")
             stackjoin_tweets = []
-        stackjoin_tweets.append({"tweet_id":tweet_id,"author_handle":author_handle,"author_id":author_id,"tweet_message":tweet_message,"image_url_dict":image_url_dict,"img_src_dict":img_src_dict})
+        stackjoin_tweets.append({"tweet_id":tweet_id,"author_handle":author_handle,"author_id":author_id,"tweet_message":tweet_message,"image_url_dict":image_url_dict,"img_src_dict":img_src_dict,"tweet_timestamp":tweet_timestamp,"tweet_datetimeISO":tweet_datetimeISO})
         openfile.seek(0)
         openfile.write(json.dumps(stackjoin_tweets, indent=4))
 
@@ -87,7 +92,7 @@ def store_stackjoin(json_response):
             tweet['image_url_dict'] = "no image"
         if tweet['img_src_dict'] == []:
             tweet['img_src_dict'] = "no image"
-        stackjoin_tweets_table_data += (f"<tr><td>{index+1}</td><td><a href=\"https://www.twitter.com/pleblira/status/{tweet['tweet_id']}\" target=\"_blank\">{tweet['tweet_id']}</a></td><td><a href=\"https://twitter.com/{tweet['author_handle']}\" target=\"_blank\">{tweet['author_handle']}</a></td><td>{tweet['author_id']}</td><td>{tweet['tweet_message']}</td><td>{str(tweet['image_url_dict'])}</td><td>{str(tweet['img_src_dict']).translate({39: None,91: None, 93: None, 44: None})}")
+        stackjoin_tweets_table_data += (f"<tr><td>{index+1}</td><td><a href=\"https://www.twitter.com/pleblira/status/{tweet['tweet_id']}\" target=\"_blank\">{tweet['tweet_id']}</a></td><td><a href=\"https://twitter.com/{tweet['author_handle']}\" target=\"_blank\">{tweet['author_handle']}</a></td><td>{tweet['author_id']}</td><td>{tweet['tweet_message']}</td><td>{str(tweet['img_src_dict']).translate({39: None,91: None, 93: None, 44: None})}</td><td style=\"word-break:break-all\">{str(tweet['image_url_dict'])}</td><td>{tweet['tweet_datetimeISO']}</td><td>{tweet['tweet_timestamp']}</td>")
     print(stackjoin_tweets_table_data)
     with open("stackjoin_tweets/stackjoin_tweets_table_data.html",'w') as openfile:
         openfile.write(stackjoin_tweets_table_data)
