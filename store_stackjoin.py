@@ -48,7 +48,8 @@ def store_stackjoin(json_response):
             r = requests.get(image_url, allow_redirects=True)
             # open("stackjoin_tweets_temp/"+tweet_id+"_image_"+index+1+".jpg",'wb').write(r.content)
             filetype = image_url.rsplit('/', 1)[1].rsplit('.', 1)[1]
-            open("stackjoin_tweets_temp/"+tweet_id+"_image_"+str(index+1)+"."+filetype,'wb').write(r.content)
+            with open("stackjoin_tweets_temp/"+tweet_id+"_image_"+str(index+1)+"."+filetype,'wb') as f:
+                f.write(r.content)
             image_url_dict.append(image_url)
             img_src_dict.append(f"<a href=\"{image_url}\" target=\"_blank\"><img src=\"{image_preview_url}\" style=\"max-width:100px;\"></a>")
             print(image_url_dict)
