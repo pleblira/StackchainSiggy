@@ -28,9 +28,9 @@ def store_stackjoin(json_response):
             print (item['id'])
             author_handle = item['username']
     print(f"the author handle is {author_handle}")  
+    image_url_dict = []
+    img_src_dict = []
     if "media" in json_response["includes"]:
-        image_url_dict = []
-        img_src_dict = []
         for index, item in enumerate(json_response['includes']['media']):
             if item['type'] == "animated_gif":
                 print('found animated gif')
