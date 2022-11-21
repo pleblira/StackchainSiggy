@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stackjoin Tweets</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+<h1>Stackjoin Tweets</h1>
+<table style="border:20px">
+    <tbody>
+    <tr>
+        <th>Tweet #</th>
+        <th>Tweet id</th>
+        <th>Handle</th>
+        <th>Author ID</th>
+        <th>Text</th>
+        <th>Image URLs</th>
+        <th>Images</th>
+      </tr>
+
+      {{ stackjoin_tweets_table_data }}
+
+
+
+    </tbody>
+</table>
+
+
+
+  </body>
+</html>
