@@ -47,7 +47,7 @@ def get_stream(set):
                 print("found stackjoin on tweet, activating store_stackjoin function")
                 store_stackjoin(json_response)
             else:
-                print("didn't find stackjoin hashtag, so not activating store_stackjoin function")
+                print("didn't find stackjoin hashtag, so not activating the store_stackjoin function")
         # tweet_message = "Fetching the tip is my favorite!!!\nIf I ever lose the tip I get sad. But I can usually find it @StackchainSig"
             throttle_list = create_throttle_list(throttle_time)
             # print(f"json dumps for get_stream: {json.dumps(json_response, indent=4, sort_keys=True)}")
