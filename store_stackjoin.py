@@ -93,7 +93,11 @@ def store_stackjoin(json_response):
             tweet['image_url_dict'] = "no image"
         if tweet['img_src_dict'] == []:
             tweet['img_src_dict'] = "no image"
-        stackjoin_tweets_table_data += (f"<tr><td>{index+1}</td><td><a href=\"https://www.twitter.com/pleblira/status/{tweet['tweet_id']}\" target=\"_blank\">{tweet['tweet_id']}</a></td><td><a href=\"https://twitter.com/{tweet['author_handle']}\" target=\"_blank\">{tweet['author_handle']}</a></td><td>{tweet['author_id']}</td><td>{tweet['tweet_message']}</td><td>{str(tweet['img_src_dict']).translate({39: None,91: None, 93: None, 44: None})}</td><td style=\"word-break:break-all\">{str(tweet['image_url_dict'])}</td><td>{tweet['tweet_datetimeISO']}</td><td>{tweet['tweet_timestamp']}</td>")
+        if int(tweet_timestamp) % 2 > 0:
+            html_row_class = "row-odd-day"
+        else:
+            html_row_class = "row-even-day"
+        stackjoin_tweets_table_data += (f"<tr class=\"{html_row_class}\"><td>{index+1}</td><td><a href=\"https://www.twitter.com/pleblira/status/{tweet['tweet_id']}\" target=\"_blank\">{tweet['tweet_id']}</a></td><td><a href=\"https://twitter.com/{tweet['author_handle']}\" target=\"_blank\">{tweet['author_handle']}</a><br>({tweet['author_id']})</td><td>{tweet['tweet_message']}</td><td>{str(tweet['img_src_dict']).translate({39: None,91: None, 93: None, 44: None})}</td><td style=\"word-break:break-all\">{str(tweet['image_url_dict'])}</td><td>{tweet['tweet_datetimeISO']} <br>({tweet['tweet_timestamp']})</td>")
     # print(stackjoin_tweets_table_data)
     with open("stackjoin_tweets/stackjoin_tweets_table_data.html",'w') as openfile:
         openfile.write(stackjoin_tweets_table_data)

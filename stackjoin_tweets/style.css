@@ -1,4 +1,32 @@
+a { color: #000; }
 table, th, td {
     border: 1px solid black;
     padding: 8px;
   }
+.row-even-day {
+  background-color: #f6d8ac;
+}
+.row-odd-day {
+  background-color: #db9833;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #333;
+    color: #eee;
+    
+  }
+  .row-even-day {
+  background-color: #192734;
+  }
+  .row-odd-day {
+  background-color: #22303C;
+  }
+  table, th, td {
+    border: 1px solid #eee;
+    padding: 8px;
+  }
+  a {
+    color: #eee;
+  }
+}
