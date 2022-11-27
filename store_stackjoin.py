@@ -93,7 +93,7 @@ def store_stackjoin(json_response):
             tweet['image_url_dict'] = "no image"
         if tweet['img_src_dict'] == []:
             tweet['img_src_dict'] = "no image"
-        if datetime.fromtimestamp(int(tweet['tweet_timestamp'])).strftime("%j") % 2 > 0:
+        if int(datetime.fromtimestamp(int(tweet['tweet_timestamp'])).strftime("%j")) % 2 >0:
             html_row_class = "row-odd-day"
         else:
             html_row_class = "row-even-day"

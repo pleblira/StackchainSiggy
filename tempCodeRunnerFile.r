@@ -175,12 +175,12 @@ tweet = {"tweet_timestamp":"1669517406"}
 # tweet = 1669517406
 
 # tweet_timestamped = datetime.fromtimestamp(tweet)
-if datetime.fromtimestamp(int(tweet['tweet_timestamp'])).strftime("%j") % 2 > 0:
-    print ("is odd")
-else:
-    print("is even")
-
-print(datetime.fromtimestamp(int(tweet['tweet_timestamp'])).strftime("%j"))
+# if datetime.fromtimestamp(int(tweet['tweet_timestamp'])).strftime("%j") % 2 > 0:
+#     print ("is odd")
+# else:
+#     print("is even")
+tweet_timestamp_datetimed = fromtimestamp(int(tweet['tweet_timestamp']))
+print(tweet_timestamp_datetimed.strftime("%j"))
 # if datetime.fromtimestamp(tweet).strftime("%j") % 2 > 0:
 #     html_row_class = "row-odd-day"
 # else:
