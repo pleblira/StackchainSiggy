@@ -57,11 +57,13 @@ def get_tweet_gif_url(tweet_id, media_key, gif_or_video):
         if item['media_key'] == media_key:
             preview_image_url = json_response['includes']['media'][index]['preview_image_url']
             if gif_or_video == "video":
+                print(json_response)
                 return preview_image_url
             gif_url = 'https://video.twimg.com/tweet_video/'+str(preview_image_url.rsplit('/', 1)[1].split('.', 1)[0])+".mp4"
-    # print(json_response)
-    # print(json.dumps(json_response, indent=4, sort_keys=True))
+    print(json_response)
+    print(json.dumps(json_response, indent=4, sort_keys=True))
     return gif_url
 
-if __name__ == "__main__":
-    get_tweet_gif_url("1594770770013655062","16_1594770764330328064","gif")
+# if __name__ == "__main__":
+#     get_tweet_gif_url("1597118405114744833","7_1597118304434507777","video")
+

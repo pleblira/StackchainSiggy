@@ -12,15 +12,15 @@ table, th, td {
 
 @media (prefers-color-scheme: dark) {
   body {
-    background: #15202B;
+    background: #18191A;
     color: #eee;
     
   }
   .row-even-day {
-  background-color: #192734;
+  background-color: #242526;
   }
   .row-odd-day {
-  background-color: #22303C;
+  background-color: #3A3B3C;
   }
   table, th, td {
     border: 1px solid #eee;
