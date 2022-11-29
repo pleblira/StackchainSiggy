@@ -25,7 +25,6 @@ def get_tweet_message(json_response,tweet_message):
     if "#stackjoin" in json_response['data']['text'].lower():
         print("found stackjoin on tweet, set to stackjoin.json")
         tweets_json_filename = "stackjoin.json"
-        # tweet_message = "Fetching the tip is my favorite!!!\nIf I ever lose the tip I get sad. But I can usually find it @StackchainSig"
     elif "#stackchaintip" in json_response['data']['text'].lower():
         print("found stackchaintip on tweet, set to stackchaintip.json")
         tweets_json_filename = "stackchaintip.json"
@@ -33,7 +32,7 @@ def get_tweet_message(json_response,tweet_message):
         print("found pbstack on tweet, set to pbstack.json")
         tweets_json_filename = "pbstack.json"
     else:
-        print("didn't find either, so stackchain")
+        print("didn't find any, so stackchain")
         tweets_json_filename = "stackchain.json"
     # downloading tweet list from S3 bucket
     boto3.client('s3').download_file('pleblira', tweets_json_filename, 'assets/' + tweets_json_filename)

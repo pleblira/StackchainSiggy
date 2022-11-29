@@ -91,10 +91,12 @@ def get_stream(set):
                 print(f"tweet_y: {tweet_y}, tweet_n: {tweet_n}")
                 print("\n")
             if tweet_y == True:
-                print("tweet replies have been disabled for now")
-                clean_up_and_save_recent_interactions(json_response, throttle_time)
-                # print("tweet will go out")
+                if "#stackjoin" in json_response['data']['text'].lower():
+                    print("tweet will go out")
+                    tweepy_send_tweet(tweet_message, tweet_id, json_response)
+                print("tweet replies for hashtags besides #stackjoin have been disabled for now")
                 # tweepy_send_tweet(tweet_message,tweet_id, json_response)
+                clean_up_and_save_recent_interactions(json_response, throttle_time)
             else:
                 print("tweet won't go out and cleaning up recent interactions was skipped")
 
