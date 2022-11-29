@@ -4,10 +4,10 @@ table, th, td {
     padding: 8px;
   }
 .row-even-day {
-  background-color: #f6d8ac;
+  background-color: #e1dfdf;
 }
 .row-odd-day {
-  background-color: #db9833;
+  background-color: #c8c5c5;
 }
 
 @media (prefers-color-scheme: dark) {

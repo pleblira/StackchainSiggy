@@ -7,6 +7,8 @@ from remove_mentions_from_tweet_message import *
 from datetime import datetime
 import io
 from dotenv import load_dotenv, find_dotenv
+from pyairtable import Table
+
 
 ENV_FILE = find_dotenv()
 if ENV_FILE:
@@ -14,6 +16,7 @@ if ENV_FILE:
 
 AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+AIRTABLE_API_KEY = os.environ.get("AIRTABLE_API_KEY")
 
 
 
@@ -38,6 +41,7 @@ def store_stackjoin(json_response):
     print(f"the author handle is {author_handle}")  
     image_url_dict = []
     img_src_dict = []
+    image_files_dict = []
     if "media" in json_response["includes"]:
         for index, item in enumerate(json_response['includes']['media']):
             media_key = item['media_key']
@@ -50,17 +54,15 @@ def store_stackjoin(json_response):
                 print('found video')
                 image_url = get_tweet_gif_url(tweet_id, media_key,  "video")
                 image_preview_url = get_tweet_gif_url(tweet_id, media_key,  "video")
+                tweet_message += " [* Tweet has video attached. Open original tweet to access video.]"
             else:
                 image_url = json_response["includes"]["media"][index]["url"]
                 image_preview_url = image_url
                 print(f"the image URL is {image_url}")
             
-
-            # open("stackjoin_tweets_temp/"+tweet_id+"_image_"+index+1+".jpg",'wb').write(r.content)
+            #saving tweet images to s3
             image_filetype = image_url.rsplit('/', 1)[1].rsplit('.', 1)[1]
             image_preview_filetype = image_preview_url.rsplit('/', 1)[1].rsplit('.', 1)[1]
-            # with open("stackjoin_tweets_temp/"+tweet_id+"_image_"+str(index+1)+"."+filetype,'wb') as f:
-                # f.write(r.content)
             s3_upload = boto3.resource('s3',region_name='us-east-1',aws_access_key_id=AWS_ACCESS_KEY_ID,aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
 
             s3_image_url = 'stackjoin_tweet_images/'+tweet_id+"/image_"+str(index+1)+"."+image_filetype
@@ -75,7 +77,11 @@ def store_stackjoin(json_response):
             print(f"the image URL is {image_url}")
             r = requests.get(image_url, allow_redirects=True)
             s3_upload.Object('pleblira',s3_image_url).put(Body=io.BytesIO(r.content), ACL="public-read",ContentType='image/jpeg')
+
+            # append to image_files_dict for later creating row on Airtable
+            image_files_dict.append({"url":image_url,'filename':"image_"+str(index+1)+"."+image_filetype})
                         
+            # appending url and html tag for embedding to dictionaries which will then be added to the json on S3 and to the html table
             image_url_dict.append(image_url)
             img_src_dict.append(f"<a href=\"/{s3_image_url}\" target=\"_blank\"><img src=\"/{s3_image_preview_url}\" style=\"max-width:100px;\"></a>")
             print(f"the image_url_dict is: {image_url_dict}")
@@ -83,6 +89,7 @@ def store_stackjoin(json_response):
     else:
         print("no image")
     
+    #downloading stackjoin_tweets.json from s3 to appen tweet information
     boto3.client('s3').download_file('pleblira', 'stackjoin_tweets/stackjoin_tweets.json', 'stackjoin_tweets/stackjoin_tweets.json')
 
     with open("stackjoin_tweets/stackjoin_tweets.json",'r+') as openfile:
@@ -96,13 +103,27 @@ def store_stackjoin(json_response):
         openfile.seek(0)
         openfile.write(json.dumps(stackjoin_tweets, indent=4))
 
+    # uploading appended json to s3
     s3_upload = boto3.resource('s3',region_name='us-east-1',aws_access_key_id=AWS_ACCESS_KEY_ID,aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
     content=json.dumps(stackjoin_tweets).encode('utf-8')
     s3_upload.Object('pleblira', 'stackjoin_tweets/stackjoin_tweets.json').put(Body=content,ACL="public-read")
 
+    # creating row on Airtable
+    table = Table(AIRTABLE_API_KEY, "appiNbM9r6Zy7G2ux", "stackjoin_tweets")
+    table.create({
+        "tweet_id": int(tweet_id),
+        "author_handle": author_handle,
+        "author_id": int(author_id),
+        "tweet_message": tweet_message,
+        "image_files": image_files_dict,
+        "image_url_dict": str(image_url_dict).translate({39: None,91: None, 93: None, 44: None}),
+        "tweet_timestamp": int(tweet_timestamp),
+        "tweet_datetimeISO": tweet_datetimeISO,
+        "img_src_dict": str(img_src_dict).translate({39: None,91: None, 93: None, 44: None})
+        })
+
 
     # turning stackjoin_tweets into html table data
-    # print(f"this is stackjoin tweets: {json.dumps(stackjoin_tweets,indent=4)}")
     stackjoin_tweets_table_data = ""
     for index, tweet in enumerate(stackjoin_tweets):
         if tweet['image_url_dict'] == []:
@@ -118,12 +139,14 @@ def store_stackjoin(json_response):
     with open("stackjoin_tweets/stackjoin_tweets_table_data.html",'w') as openfile:
         openfile.write(stackjoin_tweets_table_data)
 
+    # updating html template with table data
     with open('stackjoin_tweets/stackjoin_tweets_template.html') as openfile:
         t = Template(openfile.read())
         vals = {"stackjoin_tweets_table_data": stackjoin_tweets_table_data}
     with open('stackjoin_tweets/stackjoin_tweets.html','w') as f:
         f.write(t.render(vals))
 
+    # uploading template to s3
     content=t.render(vals)
     s3_upload.Object('pleblira', 'stackjoin_tweets/stackjoin_tweets.html').put(Body=content,ACL="public-read",ContentType='text/html')
 
