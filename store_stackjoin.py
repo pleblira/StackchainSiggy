@@ -111,9 +111,9 @@ def store_stackjoin(json_response):
     # creating row on Airtable
     table = Table(AIRTABLE_API_KEY, "appiNbM9r6Zy7G2ux", "stackjoin_tweets")
     table.create({
-        "tweet_id": int(tweet_id),
+        "tweet_id": tweet_id,
         "author_handle": author_handle,
-        "author_id": int(author_id),
+        "author_id": author_id,
         "tweet_message": tweet_message,
         "image_files": image_files_dict,
         "image_url_dict": str(image_url_dict).translate({39: None,91: None, 93: None, 44: None}),
