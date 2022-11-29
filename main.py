@@ -91,12 +91,12 @@ def get_stream(set):
                 print(f"tweet_y: {tweet_y}, tweet_n: {tweet_n}")
                 print("\n")
             if tweet_y == True:
-                print("tweet will go out")
+                print("tweet replies have been disabled for now")
                 clean_up_and_save_recent_interactions(json_response, throttle_time)
-                tweepy_send_tweet(tweet_message,tweet_id, json_response)
+                # print("tweet will go out")
+                # tweepy_send_tweet(tweet_message,tweet_id, json_response)
             else:
                 print("tweet won't go out and cleaning up recent interactions was skipped")
-            # save_to_recent_interactions(json_response)
 
 
 def main():
