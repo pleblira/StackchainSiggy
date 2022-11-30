@@ -41,7 +41,8 @@ def store_stackjoin(json_response):
     print(f"the author handle is {author_handle}")  
     image_url_dict = []
     img_src_dict = []
-    image_files_dict = []
+    airtable_image_files_dict = []
+    airtable_video_files_dict = []
     if "media" in json_response["includes"]:
         for index, item in enumerate(json_response['includes']['media']):
             media_key = item['media_key']
@@ -83,7 +84,11 @@ def store_stackjoin(json_response):
             s3_upload.Object('pleblira',s3_image_url).put(Body=io.BytesIO(r.content), ACL="public-read",ContentType='image/jpeg')
 
             # append to image_files_dict for later creating row on Airtable
-            image_files_dict.append({"url":image_url,'filename':filename+"."+image_filetype})
+            if item['type'] == "animated_gif":
+                airtable_video_files_dict.append({"url":image_url,'filename':filename+"."+image_filetype})
+            else:
+                airtable_image_files_dict.append({"url":image_url,'filename':filename+"."+image_filetype})
+
                         
             # appending url and html tag for embedding to dictionaries which will then be added to the json on S3 and to the html table
             image_url_dict.append(image_url)
@@ -119,7 +124,8 @@ def store_stackjoin(json_response):
         "author_handle": author_handle,
         "author_id": author_id,
         "tweet_message": tweet_message,
-        "image_files": image_files_dict,
+        "image_files": airtable_image_files_dict,
+        "video_files": airtable_video_files_dict,
         "image_url_dict": str(image_url_dict).translate({39: None,91: None, 93: None, 44: None}),
         "tweet_timestamp": int(tweet_timestamp),
         "tweet_datetimeISO": tweet_datetimeISO,
