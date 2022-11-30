@@ -54,19 +54,23 @@ def store_stackjoin(json_response):
                 print('found video')
                 image_url = get_tweet_gif_url(tweet_id, media_key,  "video")
                 image_preview_url = get_tweet_gif_url(tweet_id, media_key,  "video")
-                tweet_message += " [* Tweet has video attached. Open original tweet to access video.]"
+                tweet_message += " [* Tweet has video attached (unretrievable via API). Open original tweet to access video.]"
             else:
                 image_url = json_response["includes"]["media"][index]["url"]
                 image_preview_url = image_url
                 print(f"the image URL is {image_url}")
             
             #saving tweet images to s3
+            if item['type'] == "animated_gif":
+                filename = str(index+1)+"_gif"
+            else:
+                filename = str(index+1)+"_image"
             image_filetype = image_url.rsplit('/', 1)[1].rsplit('.', 1)[1]
             image_preview_filetype = image_preview_url.rsplit('/', 1)[1].rsplit('.', 1)[1]
             s3_upload = boto3.resource('s3',region_name='us-east-1',aws_access_key_id=AWS_ACCESS_KEY_ID,aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
 
-            s3_image_url = 'stackjoin_tweet_images/'+tweet_id+"/image_"+str(index+1)+"."+image_filetype
-            s3_image_preview_url = 'stackjoin_tweet_images/'+tweet_id+"/image_"+str(index+1)+"_preview."+image_preview_filetype
+            s3_image_url = 'stackjoin_tweet_images/'+tweet_id+"/"+filename+"."+image_filetype
+            s3_image_preview_url = 'stackjoin_tweet_images/'+tweet_id+"/"+filename+"_thumbnail."+image_preview_filetype
             
             # uploading stackjoin image previews to S3 bucket
             print(f"the image preview URL is {image_preview_url}")
@@ -79,7 +83,7 @@ def store_stackjoin(json_response):
             s3_upload.Object('pleblira',s3_image_url).put(Body=io.BytesIO(r.content), ACL="public-read",ContentType='image/jpeg')
 
             # append to image_files_dict for later creating row on Airtable
-            image_files_dict.append({"url":image_url,'filename':"image_"+str(index+1)+"."+image_filetype})
+            image_files_dict.append({"url":image_url,'filename':filename+"."+image_filetype})
                         
             # appending url and html tag for embedding to dictionaries which will then be added to the json on S3 and to the html table
             image_url_dict.append(image_url)
