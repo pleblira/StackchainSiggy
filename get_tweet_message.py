@@ -22,7 +22,7 @@ AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 
 def get_tweet_message(json_response,tweet_message):
     print(f"json_response['data']['text'] is {json_response['data']['text']}")
-    if "#stackjoin" in json_response['data']['text'].lower():
+    if "#stackjoin" in json_response['data']['text'].lower() and "#stackjoinadd" not in json_response['data']['text'].lower():
         print("found stackjoin on tweet, set to stackjoin.json")
         tweets_json_filename = "stackjoin.json"
     elif "#stackchaintip" in json_response['data']['text'].lower():
@@ -31,6 +31,9 @@ def get_tweet_message(json_response,tweet_message):
     elif "#pbstack" in json_response['data']['text'].lower():
         print("found pbstack on tweet, set to pbstack.json")
         tweets_json_filename = "pbstack.json"
+    elif "#stackjoinadd" in json_response['data']['text'].lower():
+        print("found stackjoinadd on tweet, set to stackjoin.json temporarily")
+        tweets_json_filename = "stackjoin.json"
     else:
         print("didn't find any, so stackchain")
         tweets_json_filename = "stackchain.json"

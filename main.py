@@ -14,6 +14,7 @@ from get_exclude_reply_user_ids import *
 from tweepy_send_tweet import *
 from get_tweet_message import *
 from store_stackjoin import *
+from stackjoin_add import *
 
 ENV_FILE = find_dotenv()
 if ENV_FILE:
@@ -41,14 +42,22 @@ def get_stream(set):
     for response_line in response.iter_lines():
         if response_line:
             json_response = json.loads(response_line)
+            print(f"\n\n\n\n\n--- --- --- INCOMING TWEET --- --- ---\n")
             print(f"the json dumps for json_response {json.dumps(json_response,indent=4)}\n\n")
             # checking if it's a stackjoin to store it
-            if "#stackjoin" in json_response['data']['text'].lower():
-                print("found stackjoin on tweet, activating store_stackjoin function")
-                store_stackjoin(json_response)
+            if "#stackjoin" in json_response['data']['text'].lower() and "#stackjoinadd" not in json_response['data']['text'].lower():
+                print("found #stackjoin on tweet, activating store_stackjoin function")
+                store_stackjoin(json_response,tweet_datetimeISO=None)
             else:
-                print("didn't find stackjoin hashtag, so not activating the store_stackjoin function")
-        # tweet_message = "Fetching the tip is my favorite!!!\nIf I ever lose the tip I get sad. But I can usually find it @StackchainSig"
+                print("didn't find #stackjoin on tweet, so not activating the store_stackjoin function")
+            tweet_id = json_response["data"]["id"]
+            if "#stackjoinadd" in json_response['data']['text'].lower():
+                print("found #stackjoinadd on tweet, activating stackjoin_add function")
+                json_response_from_stackjoinadd = stackjoin_add(tweet_id)
+                if json_response_from_stackjoinadd != None:
+                    store_stackjoin(json_response_from_stackjoinadd[0],json_response_from_stackjoinadd[1])
+            else:
+                print("didn't find #stackjoinadd on tweet, so not activating the stackjoin_add function")
             throttle_list = create_throttle_list(throttle_time)
             # print(f"json dumps for get_stream: {json.dumps(json_response, indent=4, sort_keys=True)}")
             tweet_message = json_response["data"]["text"]
@@ -60,7 +69,6 @@ def get_stream(set):
                 for element_to_replace in replace_dictionary:
                     tweet_message = tweet_message.replace(element_to_replace,replace_dictionary[element_to_replace])
                 tweet_message = tweet_message.strip() + "?\n\nFew"
-            tweet_id = json_response["data"]["id"]
             # Making all replies "Few" or something else
             # tweet_message = "Few"
             # tweet_message = "Acknowledged by Stackchain bot ✅ (proof of concept)"
@@ -72,7 +80,7 @@ def get_stream(set):
 
             while not tweet_y and not tweet_n:
                 # additional check for hashtag on text of the tweet (the API has been serving replies to the actual hashtag tweet, which does not apply)
-                if "#stackchain" not in json_response['data']['text'].lower() and "#stackchaintip" not in json_response['data']['text'].lower() and "#stackjoin" not in json_response['data']['text'].lower() and "#pbstack" not in json_response['data']['text'].lower():
+                if "#stackchain" not in json_response['data']['text'].lower() and "#stackchaintip" not in json_response['data']['text'].lower() and "#stackjoin" not in json_response['data']['text'].lower() and "#pbstack" not in json_response['data']['text'].lower() and "#stackjoinadd" not in json_response['data']['text'].lower():
                     print("switching tweet_n to True since text doesn't contain hashtags")
                     tweet_n = True
                 for throttle_item in throttle_list:
@@ -94,7 +102,7 @@ def get_stream(set):
                 if "#stackjoin" in json_response['data']['text'].lower():
                     print("tweet will go out")
                     tweepy_send_tweet(tweet_message, tweet_id, json_response)
-                print("tweet replies for hashtags besides #stackjoin have been disabled for now")
+                print("tweet replies for hashtags besides #stackjoin and #stackjoinadd have been disabled for now")
                 # tweepy_send_tweet(tweet_message,tweet_id, json_response)
                 clean_up_and_save_recent_interactions(json_response, throttle_time)
             else:

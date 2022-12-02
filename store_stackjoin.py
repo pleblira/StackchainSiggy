@@ -20,7 +20,7 @@ AIRTABLE_API_KEY = os.environ.get("AIRTABLE_API_KEY")
 
 
 
-def store_stackjoin(json_response):
+def store_stackjoin(json_response, tweet_datetimeISO):
     print("running store_stackjoin function")
     # temporarily storing json on a file, it will be later transferred directly through the function, just the two lines below, and indenting the whole function to chnage
     # with open(json_response,'r') as f:
@@ -28,9 +28,13 @@ def store_stackjoin(json_response):
     tweet_id = json_response["data"]["id"]
     author_id = json_response["data"]["author_id"]
     tweet_message = remove_mentions_from_tweet_message(json_response["data"]["text"])
-    tweet_timestamp = str(f"{datetime.timestamp(datetime.now().replace(microsecond=0)):.0f}")
-    tweet_datetimeISO = datetime.utcnow().isoformat()
-    tweet_datetimeISO = tweet_datetimeISO[0:tweet_datetimeISO.find(".")]
+    if tweet_datetimeISO == None:
+        tweet_datetimeISO = datetime.utcnow().isoformat()
+        tweet_datetimeISO = tweet_datetimeISO[0:tweet_datetimeISO.find(".")]
+        tweet_timestamp = str(f"{datetime.timestamp(datetime.now().replace(microsecond=0)):.0f}")
+    else:
+        tweet_timestamp = datetime.strptime(tweet_datetimeISO,'%Y-%m-%dT%H:%M:%S')
+        tweet_timestamp = int(datetime.timestamp(tweet_timestamp))
     for item in json_response['includes']['users']:
         # print (item)
         # print (json_response['data']['author_id'])
@@ -55,7 +59,7 @@ def store_stackjoin(json_response):
                 print('found video')
                 image_url = get_tweet_gif_url(tweet_id, media_key,  "video")
                 image_preview_url = get_tweet_gif_url(tweet_id, media_key,  "video")
-                tweet_message += " [* Tweet has video attached (unretrievable via API). Open original tweet to access video.]"
+                tweet_message += " [*Tweet has video attached (videos are unretrievable via API). Open original tweet to access video.]"
             else:
                 image_url = json_response["includes"]["media"][index]["url"]
                 image_preview_url = image_url
