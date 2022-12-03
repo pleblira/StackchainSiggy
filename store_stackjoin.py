@@ -102,7 +102,7 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
     table = Table(AIRTABLE_API_KEY, "appiNbM9r6Zy7G2ux", "stackjoin_tweets")
     airtable_API_import_notes = ""
     if " [*Tweet has video attached (videos are unretrievable via API). Open original tweet to access video.]" in tweet_message:
-        airtable_API_import_notes = " [*Tweet has video attached (videos are unretrievable via API). Open original tweet to access video.]"
+        airtable_API_import_notes = "[*Tweet has video attached (videos are unretrievable via API). Open original tweet to access video.]"
     if stackjoinadd_reporter != "0":
         airtable_API_import_notes += stackjoinadd_reporter
     tweet_message_for_airtable_API = tweet_message.replace(" [*Tweet has video attached (videos are unretrievable via API). Open original tweet to access video.]","")
@@ -117,7 +117,7 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
         "tweet_timestamp": int(tweet_timestamp),
         "tweet_datetimeISO": tweet_datetimeISO,
         "img_src_dict": str(img_src_dict).translate({39: None,91: None, 93: None, 44: None}),
-        "airtable_API_import_notes": airtable_API_import_notes
+        "airtable_API_import_notes": airtable_API_import_notes.strip()
         })
 
     if stackjoinadd_reporter != "0":
@@ -141,8 +141,6 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
     s3_upload = boto3.resource('s3',region_name='us-east-1',aws_access_key_id=AWS_ACCESS_KEY_ID,aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
     content=json.dumps(stackjoin_tweets).encode('utf-8')
     s3_upload.Object('pleblira', 'stackjoin_tweets/stackjoin_tweets.json').put(Body=content,ACL="public-read")
-
-
 
     # turning stackjoin_tweets into html table data
     stackjoin_tweets_table_data = ""
