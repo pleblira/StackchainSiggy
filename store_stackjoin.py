@@ -18,9 +18,7 @@ AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 AIRTABLE_API_KEY = os.environ.get("AIRTABLE_API_KEY")
 
-
-
-def store_stackjoin(json_response, tweet_datetimeISO):
+def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0"):
     print("running store_stackjoin function")
     # temporarily storing json on a file, it will be later transferred directly through the function, just the two lines below, and indenting the whole function to chnage
     # with open(json_response,'r') as f:
@@ -42,7 +40,7 @@ def store_stackjoin(json_response, tweet_datetimeISO):
         if item['id'] == author_id:
             print (item['id'])
             author_handle = item['username']
-    print(f"the author handle is {author_handle}")  
+    print(f"the author handle is {author_handle}")
     image_url_dict = []
     img_src_dict = []
     airtable_image_files_dict = []
@@ -97,10 +95,34 @@ def store_stackjoin(json_response, tweet_datetimeISO):
             image_url_dict.append(image_url)
             img_src_dict.append(f"<a href=\"/{s3_image_url}\" target=\"_blank\"><img src=\"/{s3_image_preview_url}\" style=\"max-width:100px;\"></a>")
             print(f"the image_url_dict is: {image_url_dict}")
-
     else:
         print("no image")
     
+    # creating row on Airtable
+    table = Table(AIRTABLE_API_KEY, "appiNbM9r6Zy7G2ux", "stackjoin_tweets")
+    airtable_API_import_notes = ""
+    if " [*Tweet has video attached (videos are unretrievable via API). Open original tweet to access video.]" in tweet_message:
+        airtable_API_import_notes = " [*Tweet has video attached (videos are unretrievable via API). Open original tweet to access video.]"
+    if stackjoinadd_reporter != "0":
+        airtable_API_import_notes += stackjoinadd_reporter
+    tweet_message_for_airtable_API = tweet_message.replace(" [*Tweet has video attached (videos are unretrievable via API). Open original tweet to access video.]","")
+    table.create({
+        "tweet_id": tweet_id,
+        "author_handle": author_handle,
+        "author_id": author_id,
+        "tweet_message": tweet_message_for_airtable_API,
+        "image_files": airtable_image_files_dict,
+        "gif_files": airtable_gif_files_dict,
+        "image_url_dict": str(image_url_dict).translate({39: None,91: None, 93: None, 44: None}),
+        "tweet_timestamp": int(tweet_timestamp),
+        "tweet_datetimeISO": tweet_datetimeISO,
+        "img_src_dict": str(img_src_dict).translate({39: None,91: None, 93: None, 44: None}),
+        "airtable_API_import_notes": airtable_API_import_notes
+        })
+
+    if stackjoinadd_reporter != "0":
+        tweet_message += stackjoinadd_reporter
+
     #downloading stackjoin_tweets.json from s3 to appen tweet information
     boto3.client('s3').download_file('pleblira', 'stackjoin_tweets/stackjoin_tweets.json', 'stackjoin_tweets/stackjoin_tweets.json')
 
@@ -120,20 +142,6 @@ def store_stackjoin(json_response, tweet_datetimeISO):
     content=json.dumps(stackjoin_tweets).encode('utf-8')
     s3_upload.Object('pleblira', 'stackjoin_tweets/stackjoin_tweets.json').put(Body=content,ACL="public-read")
 
-    # creating row on Airtable
-    table = Table(AIRTABLE_API_KEY, "appiNbM9r6Zy7G2ux", "stackjoin_tweets")
-    table.create({
-        "tweet_id": tweet_id,
-        "author_handle": author_handle,
-        "author_id": author_id,
-        "tweet_message": tweet_message,
-        "image_files": airtable_image_files_dict,
-        "gif_files": airtable_gif_files_dict,
-        "image_url_dict": str(image_url_dict).translate({39: None,91: None, 93: None, 44: None}),
-        "tweet_timestamp": int(tweet_timestamp),
-        "tweet_datetimeISO": tweet_datetimeISO,
-        "img_src_dict": str(img_src_dict).translate({39: None,91: None, 93: None, 44: None})
-        })
 
 
     # turning stackjoin_tweets into html table data

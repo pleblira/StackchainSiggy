@@ -56,8 +56,13 @@ def connect_to_endpoint(url):
 def stackjoin_add(tweet_id):
     url = create_url(tweet_id)
     json_response_from_reply = connect_to_endpoint(url)
+    for user in json_response_from_reply['includes']['users']:
+        if user['id'] == json_response_from_reply['data'][0]['author_id']:
+            stackjoinadd_reporter = " [stackjoinadd_reporter: "
+            stackjoinadd_reporter += user['username']
+            stackjoinadd_reporter += " - ID "+user['id']+"]"
     tweet_id_to_stackjoinadd = "1110302988"
-    # print(json.dumps(json_response_from_reply, indent=4, sort_keys=True))
+    print(json.dumps(json_response_from_reply, indent=4, sort_keys=True))
     # print(json_response_from_reply['data'][0]['referenced_tweets'][0]['id'])
     if 'referenced_tweets' not in json_response_from_reply['data'][0]:
         return None
@@ -76,7 +81,8 @@ def stackjoin_add(tweet_id):
     # print(json.dumps(json_response_from_tweet_to_stackjoinadd, indent=4, sort_keys=True))
     tweet_datetimeISO = rebuilding_dict_to_make_it_compatible_with_store_stackjoin_function['data']['created_at']
     tweet_datetimeISO = tweet_datetimeISO[0:tweet_datetimeISO.find(".")]
-    return rebuilding_dict_to_make_it_compatible_with_store_stackjoin_function, tweet_datetimeISO
+    print (stackjoinadd_reporter)
+    return rebuilding_dict_to_make_it_compatible_with_store_stackjoin_function, tweet_datetimeISO, stackjoinadd_reporter
 
 if __name__ == "__main__":
     stackjoin_add("1598477437813260288")
