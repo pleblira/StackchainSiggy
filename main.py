@@ -15,6 +15,7 @@ from tweepy_send_tweet import *
 from get_tweet_message import *
 from store_stackjoin import *
 from stackjoin_add import *
+import time
 
 ENV_FILE = find_dotenv()
 if ENV_FILE:
@@ -33,7 +34,15 @@ def get_stream(set):
         "https://api.twitter.com/2/tweets/search/stream?expansions=author_id,attachments.media_keys&media.fields=url", auth=bearer_oauth, stream=True,
     )
     print(response.status_code)
-    if response.status_code != 200:
+    if response.status_code == 429:
+        print("ran into error 429 so waiting for 30 seconds for connection to be reset")
+        time.sleep(30)
+        raise Exception(
+            "Cannot get stream (HTTP {}): {}".format(
+                response.status_code, response.text
+            )
+        )
+    if response.status_code != 200 and response.status_code != 429:
         raise Exception(
             "Cannot get stream (HTTP {}): {}".format(
                 response.status_code, response.text
