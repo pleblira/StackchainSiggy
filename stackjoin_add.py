@@ -4,6 +4,7 @@ import json
 from dotenv import load_dotenv, find_dotenv
 import webbrowser
 from datetime import datetime
+from remove_mentions_from_tweet_message import *
 
 
 ENV_FILE = find_dotenv()
@@ -60,9 +61,12 @@ def stackjoin_add(tweet_id):
         if user['id'] == json_response_from_reply['data'][0]['author_id']:
             stackjoinadd_reporter = " [stackjoinadd_reporter: "
             stackjoinadd_reporter += user['username']
-            stackjoinadd_reporter += " - ID "+user['id']+"]"
+            stackjoinadd_reporter += " - ID "+user['id']
     tweet_id_to_stackjoinadd = "1110302988"
-    print(json.dumps(json_response_from_reply, indent=4, sort_keys=True))
+    # print(json.dumps(json_response_from_reply, indent=4, sort_keys=True))
+    stackjoinadd_tweet_message = " - message: "
+    stackjoinadd_tweet_message += remove_mentions_from_tweet_message(json_response_from_reply['data'][0]['text'])
+    # print(stackjoinadd_tweet_message)
     # print(json_response_from_reply['data'][0]['referenced_tweets'][0]['id'])
     if 'referenced_tweets' not in json_response_from_reply['data'][0]:
         return None
@@ -82,8 +86,9 @@ def stackjoin_add(tweet_id):
     tweet_datetimeISO = rebuilding_dict_to_make_it_compatible_with_store_stackjoin_function['data']['created_at']
     tweet_datetimeISO = tweet_datetimeISO[0:tweet_datetimeISO.find(".")]
     print (stackjoinadd_reporter)
-    return rebuilding_dict_to_make_it_compatible_with_store_stackjoin_function, tweet_datetimeISO, stackjoinadd_reporter
+    return rebuilding_dict_to_make_it_compatible_with_store_stackjoin_function, tweet_datetimeISO, stackjoinadd_reporter, stackjoinadd_tweet_message
 
 if __name__ == "__main__":
-    stackjoin_add("1598477437813260288")
+    stackjoin_add("1600692890807971840")
+    # stackjoin_add("1598477437813260288")
 

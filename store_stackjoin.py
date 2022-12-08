@@ -18,7 +18,7 @@ AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 AIRTABLE_API_KEY = os.environ.get("AIRTABLE_API_KEY")
 
-def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0"):
+def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0", stackjoinadd_tweet_message = ""):
     print("running store_stackjoin function")
     # temporarily storing json on a file, it will be later transferred directly through the function, just the two lines below, and indenting the whole function to chnage
     # with open(json_response,'r') as f:
@@ -105,6 +105,8 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
         airtable_API_import_notes = "[*Tweet has video attached (videos are unretrievable via API). Open original tweet to access video.]"
     if stackjoinadd_reporter != "0":
         airtable_API_import_notes += stackjoinadd_reporter
+    if stackjoinadd_tweet_message != "":
+        airtable_API_import_notes += stackjoinadd_tweet_message
     tweet_message_for_airtable_API = tweet_message.replace(" [*Tweet has video attached (videos are unretrievable via API). Open original tweet to access video.]","")
     table.create({
         "tweet_id": tweet_id,

@@ -64,7 +64,7 @@ def get_stream(set):
                 print("found #stackjoinadd on tweet, activating stackjoin_add function")
                 json_response_from_stackjoinadd = stackjoin_add(tweet_id)
                 if json_response_from_stackjoinadd != None:
-                    store_stackjoin(json_response_from_stackjoinadd[0],json_response_from_stackjoinadd[1],json_response_from_stackjoinadd[2])
+                    store_stackjoin(json_response_from_stackjoinadd[0],json_response_from_stackjoinadd[1],json_response_from_stackjoinadd[2], json_response_from_stackjoinadd[3])
             else:
                 print("didn't find #stackjoinadd on tweet, so not activating the stackjoin_add function")
             throttle_list = create_throttle_list(throttle_time)
