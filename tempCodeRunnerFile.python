@@ -1,5 +1,0 @@
-from datetime import datetime
-
-tweet_timestamp = str(f"{datetime.timestamp(datetime.now().replace(microsecond=0)):.0f}")
-
-print(tweet_timestamp)
