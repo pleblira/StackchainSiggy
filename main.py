@@ -95,6 +95,8 @@ def get_stream(set):
                 # set tweet_n to True if no attachments on tweet
                 if json_response['data']['attachments'] == {}:
                     tweet_n = True
+                if json_response['data']['author_id'] == "1419655667112108032":
+                    tweet_n = True
                 for throttle_item in throttle_list:
                     print(f"\nthis is an item from throttle_list: {throttle_item}")
                     if json_response['data']['author_id'] in throttle_item:
