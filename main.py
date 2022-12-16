@@ -93,7 +93,7 @@ def get_stream(set):
                     print("switching tweet_n to True since text doesn't contain hashtags")
                     tweet_n = True
                 # set tweet_n to True if no attachments on tweet
-                if ['data']['attachments'] == {}:
+                if json_response['data']['attachments'] == {}:
                     tweet_n = True
                 for throttle_item in throttle_list:
                     print(f"\nthis is an item from throttle_list: {throttle_item}")
