@@ -92,6 +92,9 @@ def get_stream(set):
                 if "#stackchain" not in json_response['data']['text'].lower() and "#stackchaintip" not in json_response['data']['text'].lower() and "#stackjoin" not in json_response['data']['text'].lower() and "#pbstack" not in json_response['data']['text'].lower() and "#stackjoinadd" not in json_response['data']['text'].lower():
                     print("switching tweet_n to True since text doesn't contain hashtags")
                     tweet_n = True
+                # set tweet_n to True if no attachments on tweet
+                if ['data']['attachments'] == {}:
+                    tweet_n = True
                 for throttle_item in throttle_list:
                     print(f"\nthis is an item from throttle_list: {throttle_item}")
                     if json_response['data']['author_id'] in throttle_item:
@@ -107,15 +110,17 @@ def get_stream(set):
                     tweet_y = True
                 print(f"tweet_y: {tweet_y}, tweet_n: {tweet_n}")
                 print("\n")
+                if "#stackjoin" not in json_response['data']['text'].lower():
+                    tweet_n = True
             if tweet_y == True:
-                if "#stackjoin" in json_response['data']['text'].lower():
-                    print("tweet will go out")
-                    tweepy_send_tweet(tweet_message, tweet_id, json_response)
-                print("tweet replies for hashtags besides #stackjoin and #stackjoinadd have been disabled for now")
+                # if "#stackjoin" in json_response['data']['text'].lower():
+                print("tweet will go out")
+                tweepy_send_tweet(tweet_message, tweet_id, json_response)
                 # tweepy_send_tweet(tweet_message,tweet_id, json_response)
                 clean_up_and_save_recent_interactions(json_response, throttle_time)
             else:
                 print("tweet won't go out and cleaning up recent interactions was skipped")
+                print("tweet replies for hashtags besides #stackjoin and #stackjoinadd have been disabled for now")
 
 
 def main():
