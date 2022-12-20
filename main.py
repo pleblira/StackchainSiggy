@@ -115,9 +115,9 @@ def get_stream(set):
                 if "#stackjoin" not in json_response['data']['text'].lower():
                     tweet_n = True
             if tweet_y == True:
-                # if "#stackjoin" in json_response['data']['text'].lower():
-                print("tweet will go out")
-                tweepy_send_tweet(tweet_message, tweet_id, json_response)
+                if "#stackjoin" in json_response['data']['text'].lower():
+                    print("tweet will go out")
+                    tweepy_send_tweet(tweet_message, tweet_id, json_response)
                 # tweepy_send_tweet(tweet_message,tweet_id, json_response)
                 clean_up_and_save_recent_interactions(json_response, throttle_time)
             else:
