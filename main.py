@@ -35,8 +35,8 @@ def get_stream(set):
     )
     print(response.status_code)
     if response.status_code == 429:
-        print("ran into error 429 so waiting for 30 seconds for connection to be reset")
-        time.sleep(30)
+        print("ran into error 429 so waiting for 60 seconds for connection to be reset")
+        time.sleep(60)
         raise Exception(
             "Cannot get stream (HTTP {}): {}".format(
                 response.status_code, response.text
