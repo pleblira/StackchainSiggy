@@ -106,6 +106,7 @@ def get_stream(set):
                     tweet_n = True
             if tweet_y == True:
                 if "#stackjoin" in json_response['data']['text'].lower():
+                    # tweets have been disabled and bot has been operating silently. Disabled get_tweets function so it doesn't have to access AWS to pull tweet message list every time. If to reactivate tweeting, need to reactivate get_tweets function
                     print("tweet has been disabled for now")
                     # print("tweet will go out")
                     # tweepy_send_tweet(tweet_message, tweet_id, json_response)
