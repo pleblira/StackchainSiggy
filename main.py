@@ -70,19 +70,9 @@ def get_stream(set):
             throttle_list = create_throttle_list(throttle_time)
             # print(f"json dumps for get_stream: {json.dumps(json_response, indent=4, sort_keys=True)}")
             tweet_message = json_response["data"]["text"]
-            if tweet_message.strip()[0:len(tweet_message)-9] == (tweet_message.strip()[0:tweet_message.lower().find("@fewbot21")-8]):
-                tweet_message = "Few"
-            else:
-                tweet_message = tweet_message[tweet_message.lower().find("@fewbot21")+10:]
-                replace_dictionary = {"?":"",",":"",":":"","!":"","you":"I",".":""}
-                for element_to_replace in replace_dictionary:
-                    tweet_message = tweet_message.replace(element_to_replace,replace_dictionary[element_to_replace])
-                tweet_message = tweet_message.strip() + "?\n\nFew"
-            # Making all replies "Few" or something else
-            # tweet_message = "Few"
-            # tweet_message = "Acknowledged by Stackchain bot ✅ (proof of concept)"
-            tweet_message = get_tweet_message(json_response, tweet_message)
-            print(tweet_message)
+            # tweets have been disabled and bot has been operating silently. Disabled function below so it doesn't have to access AWS to pull tweet message list every time
+            # tweet_message = get_tweet_message(json_response, tweet_message)
+            # print(tweet_message)
 
             tweet_y = False
             tweet_n = False
