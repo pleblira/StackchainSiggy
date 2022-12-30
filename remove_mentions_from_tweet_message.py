@@ -41,7 +41,6 @@ def remove_mentions_from_tweet_message(tweet_message):
             tweet_message_list.append(tweet_message_list[len(tweet_message_list)+-1][:len(tweet_message_list[len(tweet_message_list)-1])-24])
         tweet_message = tweet_message_list[len(tweet_message_list)-1]
 
-    # print(f"this is the sliced tweet message:\n{tweet_message[end_of_mentions_index:len(tweet_message)]}")
     return tweet_message
 
 if __name__ == '__main__':
