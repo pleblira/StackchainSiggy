@@ -38,7 +38,7 @@ def remove_mentions_from_tweet_message(tweet_message):
     if tweet_message[len(tweet_message)-23:len(tweet_message)-20] == "htt":
         tweet_message_list = [tweet_message]
         while tweet_message_list[len(tweet_message_list)-1][len(tweet_message_list[len(tweet_message_list)-1])-23:len(tweet_message_list[len(tweet_message_list)-1])-20] == "htt":
-            tweet_message_list.append(tweet_message_list[len(tweet_message_list)+-1][:len(tweet_message_list[len(tweet_message_list)-1])-24])
+            tweet_message_list.append(tweet_message_list[len(tweet_message_list)+-1][:len(tweet_message_list[len(tweet_message_list)-1])-23].rstrip())
         tweet_message = tweet_message_list[len(tweet_message_list)-1]
 
     return tweet_message
