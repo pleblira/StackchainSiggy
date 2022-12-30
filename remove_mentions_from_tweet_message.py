@@ -43,7 +43,7 @@ def remove_mentions_from_tweet_message(tweet_message):
 
     return tweet_message
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
     # remove_mentions_from_tweet_message(string_one_tco)
     # remove_mentions_from_tweet_message(string_two_tco)
     # remove_mentions_from_tweet_message(string_three_tco)
