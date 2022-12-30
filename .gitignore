@@ -1,2 +1,5 @@
 .env
 .env
+/__pycache__
+tempCodeRunnerFile.py
+.DS_Store
