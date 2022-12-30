@@ -1,5 +1,3 @@
-import time
-
 string_one_tco = '''@ndgoHODL @bamahodl @BrokenSystem20 @PeterAnsel9 @JacktheOrigin @ZiltoidXGFY @phathodl @temahkwe @DocHodllday @BitcoinOdyssey @happyclowntime @MaliVitale @jc4466 @s256anon001 @BTC_Freeborn @corndalorian @jileezie #RogueChainTip 101
 
 .006BTC*$16875/BTC=$101.25 https://t.co/TruubYf0y8'''
@@ -49,4 +47,4 @@ def remove_mentions_from_tweet_message(tweet_message):
 if __name__ == '__main__':
     # remove_mentions_from_tweet_message(string_one_tco)
     # remove_mentions_from_tweet_message(string_two_tco)
-    remove_mentions_from_tweet_message(string_three_tco)
+    # remove_mentions_from_tweet_message(string_three_tco)
