@@ -83,8 +83,8 @@ def get_stream(set):
                     print("switching tweet_n to True since text doesn't contain hashtags")
                     tweet_n = True
                 # set tweet_n to True if no attachments on tweet
-                if json_response['data']['attachments'] == {}:
-                    tweet_n = True
+                # if json_response['data']['attachments'] == {}:
+                #     tweet_n = True
                 if json_response['data']['author_id'] == "1419655667112108032":
                     tweet_n = True
                 for throttle_item in throttle_list:
@@ -108,7 +108,7 @@ def get_stream(set):
                 if "#stackjoin" in json_response['data']['text'].lower():
                     # tweets have been disabled and bot has been operating silently. Disabled get_tweets function so it doesn't have to access AWS to pull tweet message list every time. If to reactivate tweeting, need to reactivate get_tweets function
                     # print("tweet has been disabled for now")
-                    # print("tweet will go out")
+                    print("tweet will go out")
                     tweet_message = "🤖 Stackjoin Recorded to the Mempool ☑️"
                     tweepy_send_tweet(tweet_message, tweet_id, json_response)
                 # tweepy_send_tweet(tweet_message,tweet_id, json_response)
