@@ -117,6 +117,8 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
         stackjoin_tweets_or_blocks_filter_term = "tweet_id"
         stackjoin_tweets_or_blocks = "tblAHtdeESADDCKGA"
     url = "https://api.airtable.com/v0/appiNbM9r6Zy7G2ux/"+stackjoin_tweets_or_blocks
+    if block_height_or_tweet_id == "":
+        block_height_or_tweet_id = 21000000
     headers = {"Authorization": "Bearer "+AIRTABLE_BEARER_TOKEN}
     x = requests.get(url, headers=headers, params={'fields[]':[stackjoin_tweets_or_blocks_filter_term], 'filterByFormula':stackjoin_tweets_or_blocks_filter_term+"="+str(block_height_or_tweet_id)}).json()
     # print(json.dumps(x,indent=4))
