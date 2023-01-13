@@ -130,10 +130,12 @@ def get_stream(set):
                     tweet_n = True
             if tweet_y == True:
                 if "#stackjoin" in json_response['data']['text'].lower():
-                    # tweets have been disabled and bot has been operating silently. Disabled get_tweets function so it doesn't have to access AWS to pull tweet message list every time. If to reactivate tweeting, need to reactivate get_tweets function
-                    # print("tweet has been disabled for now")
                     print("tweet will go out")
                     tweet_message = "🤖 Stackjoin Recorded to the Mempool ☑️"
+                    tweepy_send_tweet(tweet_message, tweet_id, json_response)
+                if "#stackchainblockadd" in json_response['data']['text'].lower():
+                    print("tweet will go out")
+                    tweet_message = "🤖 Stackchain Block Recorded ☑️"
                     tweepy_send_tweet(tweet_message, tweet_id, json_response)
                 # tweepy_send_tweet(tweet_message,tweet_id, json_response)
                 clean_up_and_save_recent_interactions(json_response, throttle_time)
