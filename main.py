@@ -58,10 +58,12 @@ def get_stream(set):
             tweet_id = json_response["data"]["id"]
             tweet_message = json_response["data"]["text"]
             if "#stackjoin" in json_response['data']['text'].lower() or "#stackjoinadd" in json_response['data']['text'].lower():
+                print('activating dollar amount')
                 if tweet_message[tweet_message.find("#stackchainblockadd ")+20:].find(" ") == -1:
                     dollar_amount = tweet_message[tweet_message.find("#stackchainblockadd ")+20:]
                 else:
                     dollar_amount = tweet_message[tweet_message.find("#stackchainblockadd ")+20:][:tweet_message[tweet_message.find("#stackchainblockadd ")+20:].find(" ")]
+                print(f"the dollar amount is {dollar_amount}")
             # checking if it's a stackjoin to store it
             if "#stackjoin" in json_response['data']['text'].lower() and "#stackjoinadd" not in json_response['data']['text'].lower():
                 print("found #stackjoin on tweet, activating store_stackjoin function")
