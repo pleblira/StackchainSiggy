@@ -170,8 +170,11 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
     else:
         try:
             dollar_amount = float(dollar_amount.replace("$",""))
+            if stackjoinadd_reporter not in "AnthonyDessauer, __overflow_, jc4466, LoKoBTC, BrokenSystem20, pleblira, phathodl, derekmross":
+                dollar_amount = 0.0
         except:
             dollar_amount = 0.0
+        
         if create_or_update == "create":
             print('creating')
             table.create({
