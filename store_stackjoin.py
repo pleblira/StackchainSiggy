@@ -132,7 +132,7 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
     # checking if block
     if stackjoin_tweets_or_blocks == "tblcwUsNLE3AecXpu": 
         try:
-            block_height_or_tweet_id = int(block_height_or_tweet_id)
+            block_height_or_tweet_id = int(block_height_or_tweet_id.replace("$",""))
         except:
             block_height_or_tweet_id = 21000000
         if create_or_update == "create":
@@ -169,7 +169,7 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
     # for stackjoins
     else:
         try:
-            dollar_amount = float(dollar_amount)
+            dollar_amount = float(dollar_amount.replace("$",""))
         except:
             dollar_amount = 0.0
         if create_or_update == "create":
