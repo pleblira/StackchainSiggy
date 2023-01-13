@@ -166,7 +166,7 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
             print('creating')
             table.create({
                 "tweet_id": tweet_id,
-                "dollar_amount": dollar_amount,
+                "dollar_amount": int(dollar_amount),
                 "author_handle": author_handle,
                 "author_id": author_id,
                 "tweet_message": tweet_message_for_airtable_API,
@@ -182,8 +182,8 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
             print('updating')
             table = Table(AIRTABLE_API_KEY, 'appiNbM9r6Zy7G2ux', "stackjoin_tweets")
             Table.update(table, record_id=record_id,fields={
-                
                 "tweet_id": tweet_id,
+                "dollar_amount": int(dollar_amount),
                 "author_handle": author_handle,
                 "author_id": author_id,
                 "tweet_message": tweet_message_for_airtable_API,
