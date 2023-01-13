@@ -131,6 +131,10 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
 
     # checking if block
     if stackjoin_tweets_or_blocks == "tblcwUsNLE3AecXpu": 
+        # merge airtable_gif_files_dict into airtable_image_files_dict
+        for item in airtable_gif_files_dict:
+            airtable_image_files_dict.append(item)
+        # checking if valid block height was added to tweet
         try:
             block_height_or_tweet_id = int(block_height_or_tweet_id.replace("$",""))
         except:
