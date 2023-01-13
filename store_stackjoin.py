@@ -9,7 +9,6 @@ import io
 from dotenv import load_dotenv, find_dotenv
 from pyairtable import Table
 
-
 ENV_FILE = find_dotenv()
 if ENV_FILE:
     load_dotenv(ENV_FILE)
@@ -17,8 +16,9 @@ if ENV_FILE:
 AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 AIRTABLE_API_KEY = os.environ.get("AIRTABLE_API_KEY")
+AIRTABLE_BEARER_TOKEN = os.environ.get("AIRTABLE_BEARER_TOKEN")
 
-def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0", stackjoinadd_tweet_message = ""):
+def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0", stackjoinadd_tweet_message = "", block_height_or_tweet_id="", stackjoin_tweets_or_blocks = "block"):
     print("running store_stackjoin function")
     # temporarily storing json on a file, it will be later transferred directly through the function, just the two lines below, and indenting the whole function to chnage
     # with open(json_response,'r') as f:
@@ -98,8 +98,7 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
     else:
         print("no image")
     
-    # creating row on Airtable
-    table = Table(AIRTABLE_API_KEY, "appiNbM9r6Zy7G2ux", "stackjoin_tweets")
+    # defining airtable_API_import_notes string
     airtable_API_import_notes = ""
     if " [*Tweet has video attached (videos are unretrievable via API). Open original tweet to access video.]" in tweet_message:
         airtable_API_import_notes = "[*Tweet has video attached (videos are unretrievable via API). Open original tweet to access video.]"
@@ -108,19 +107,90 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
     if stackjoinadd_tweet_message != "":
         airtable_API_import_notes += stackjoinadd_tweet_message
     tweet_message_for_airtable_API = tweet_message.replace(" [*Tweet has video attached (videos are unretrievable via API). Open original tweet to access video.]","")
-    table.create({
-        "tweet_id": tweet_id,
-        "author_handle": author_handle,
-        "author_id": author_id,
-        "tweet_message": tweet_message_for_airtable_API,
-        "image_files": airtable_image_files_dict,
-        "gif_files": airtable_gif_files_dict,
-        "image_url_dict": str(image_url_dict).translate({39: None,91: None, 93: None, 44: None}),
-        "tweet_timestamp": int(tweet_timestamp),
-        "tweet_datetimeISO": tweet_datetimeISO,
-        "img_src_dict": str(img_src_dict).translate({39: None,91: None, 93: None, 44: None}),
-        "airtable_API_import_notes": airtable_API_import_notes.strip()
-        })
+
+    # creating row or updating row on Airtable
+    table = Table(AIRTABLE_API_KEY, "appiNbM9r6Zy7G2ux", stackjoin_tweets_or_blocks)
+    if stackjoin_tweets_or_blocks == "blocks":
+        stackjoin_tweets_or_blocks = "tblcwUsNLE3AecXpu"
+        stackjoin_tweets_or_blocks_filter_term = "block_height"
+    else:
+        stackjoin_tweets_or_blocks_filter_term = "tweet_id"
+        stackjoin_tweets_or_blocks = "tblAHtdeESADDCKGA"
+    url = "https://api.airtable.com/v0/appiNbM9r6Zy7G2ux/"+stackjoin_tweets_or_blocks
+    headers = {"Authorization": "Bearer "+AIRTABLE_BEARER_TOKEN}
+    x = requests.get(url, headers=headers, params={'fields[]':[stackjoin_tweets_or_blocks_filter_term], 'filterByFormula':stackjoin_tweets_or_blocks_filter_term+"="+str(block_height_or_tweet_id)}).json()
+    # print(json.dumps(x,indent=4))
+    print(x)
+    if x['records'] == []:
+        create_or_update = "create"
+    else:
+        create_or_update = "update"
+        record_id = x['records'][0]['id']
+
+    if stackjoin_tweets_or_blocks == "tblcwUsNLE3AecXpu": 
+        if create_or_update == "create":
+            print('creating')
+            table.create({
+                "block_height": block_height_or_tweet_id,
+                "tweet_id": tweet_id,
+                "author_handle": author_handle,
+                "author_id": author_id,
+                "importing_full_block_message": tweet_message_for_airtable_API,
+                "block_summary_image": airtable_image_files_dict,
+                "image_url_dict": str(image_url_dict).translate({39: None,91: None, 93: None, 44: None}),
+                "block_timestamp": int(tweet_timestamp),
+                "block_datetimeISO": tweet_datetimeISO,
+                "img_src_dict": str(img_src_dict).translate({39: None,91: None, 93: None, 44: None}),
+                "airtable_API_import_notes": airtable_API_import_notes.strip()
+                })
+        # if updating: 
+        elif create_or_update == "update":
+            print('updating')
+            table = Table(AIRTABLE_API_KEY, 'appiNbM9r6Zy7G2ux', "blocks")
+            Table.update(table, record_id=record_id,fields={
+                "tweet_id": tweet_id,
+                "author_handle": author_handle,
+                "author_id": author_id,
+                "importing_full_block_message": tweet_message_for_airtable_API,
+                "block_summary_image": airtable_image_files_dict,
+                "image_url_dict": str(image_url_dict).translate({39: None,91: None, 93: None, 44: None}),
+                "block_timestamp": int(tweet_timestamp),
+                "block_datetimeISO": tweet_datetimeISO,
+                "img_src_dict": str(img_src_dict).translate({39: None,91: None, 93: None, 44: None}),
+                "airtable_API_import_notes": airtable_API_import_notes.strip()
+                })
+    else:
+        if create_or_update == "create":
+            print('creating')
+            table.create({
+                "tweet_id": tweet_id,
+                "author_handle": author_handle,
+                "author_id": author_id,
+                "tweet_message": tweet_message_for_airtable_API,
+                "block_summary_image": airtable_image_files_dict,
+                "image_url_dict": str(image_url_dict).translate({39: None,91: None, 93: None, 44: None}),
+                "block_timestamp": int(tweet_timestamp),
+                "block_datetimeISO": tweet_datetimeISO,
+                "img_src_dict": str(img_src_dict).translate({39: None,91: None, 93: None, 44: None}),
+                "airtable_API_import_notes": airtable_API_import_notes.strip()
+                })
+        # if updating: 
+        elif create_or_update == "update":
+            print('updating')
+            table = Table(AIRTABLE_API_KEY, 'appiNbM9r6Zy7G2ux', "blocks")
+            Table.update(table, record_id=record_id,fields={
+                "tweet_id": tweet_id,
+                "author_handle": author_handle,
+                "author_id": author_id,
+                "importing_full_block_message": tweet_message_for_airtable_API,
+                "block_summary_image": airtable_image_files_dict,
+                "image_url_dict": str(image_url_dict).translate({39: None,91: None, 93: None, 44: None}),
+                "block_timestamp": int(tweet_timestamp),
+                "block_datetimeISO": tweet_datetimeISO,
+                "img_src_dict": str(img_src_dict).translate({39: None,91: None, 93: None, 44: None}),
+                "airtable_API_import_notes": airtable_API_import_notes.strip()
+                })
+
 
     if stackjoinadd_reporter != "0":
         tweet_message += stackjoinadd_reporter

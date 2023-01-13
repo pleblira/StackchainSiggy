@@ -15,6 +15,7 @@ from tweepy_send_tweet import *
 from get_tweet_message import *
 from store_stackjoin import *
 from stackjoin_add import *
+from stackchain_block_add import *
 import time
 
 ENV_FILE = find_dotenv()
@@ -56,7 +57,7 @@ def get_stream(set):
             # checking if it's a stackjoin to store it
             if "#stackjoin" in json_response['data']['text'].lower() and "#stackjoinadd" not in json_response['data']['text'].lower():
                 print("found #stackjoin on tweet, activating store_stackjoin function")
-                store_stackjoin(json_response,tweet_datetimeISO=None)
+                store_stackjoin(json_response,tweet_datetimeISO=None, stackjoin_tweets_or_blocks = "stackjoin_tweets", block_height_or_tweet_id=json_response["data"]["id"])
             else:
                 print("didn't find #stackjoin on tweet, so not activating the store_stackjoin function")
             tweet_id = json_response["data"]["id"]
@@ -64,9 +65,11 @@ def get_stream(set):
                 print("found #stackjoinadd on tweet, activating stackjoin_add function")
                 json_response_from_stackjoinadd = stackjoin_add(tweet_id)
                 if json_response_from_stackjoinadd != None:
-                    store_stackjoin(json_response_from_stackjoinadd[0],json_response_from_stackjoinadd[1],json_response_from_stackjoinadd[2], json_response_from_stackjoinadd[3])
-            else:
-                print("didn't find #stackjoinadd on tweet, so not activating the stackjoin_add function")
+                    store_stackjoin(json_response_from_stackjoinadd[0],json_response_from_stackjoinadd[1],json_response_from_stackjoinadd[2], json_response_from_stackjoinadd[3], stackjoin_tweets_or_blocks = "stackjoin_tweets", block_height_or_tweet_id=json_response_from_stackjoinadd["data"]["id"])
+            elif "#stackchainblockadd" in json_response['data['text'].lower():
+                print("found #stackchainblockadd, initiate stackchain_block_store function")
+                block_height = json_response['data['text'][json_response['data['text'].find("#stackchainblockadd ")+20:][:json_response['data['text'][json_response['data['text'].find("#stackchainblockadd ")+20:].find(" ")]
+                stackchain_block_add(tweet_id, block_height,stackjoin_tweets_or_blocks = "blocks")
             throttle_list = create_throttle_list(throttle_time)
             # print(f"json dumps for get_stream: {json.dumps(json_response, indent=4, sort_keys=True)}")
             tweet_message = json_response["data"]["text"]
