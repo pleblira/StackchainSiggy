@@ -131,7 +131,13 @@ def get_stream(set):
             if tweet_y == True:
                 if "#stackjoin" in json_response['data']['text'].lower():
                     print("tweet will go out")
-                    tweet_message = "🤖 Stackjoin Recorded to the Mempool ☑️"
+                    try:
+                        dollar_amount = float(dollar_amount.replace("$",""))
+                    except:
+                        dollar_amount = 0.0
+                    if dollar_amount != "0.0" and dollar_amount != "":
+                        dollar_amount_for_tweet_text = "$"+dollar_amount+" "
+                    tweet_message = f"🤖 {dollar_amount_for_tweet_text}Stackjoin Recorded to the Mempool ☑️"
                     tweepy_send_tweet(tweet_message, tweet_id, json_response)
                 if "#stackchainblockadd" in json_response['data']['text'].lower():
                     print("tweet will go out")
