@@ -57,12 +57,19 @@ def get_stream(set):
             # checking if dollar amount included on stackjoin
             tweet_id = json_response["data"]["id"]
             tweet_message = json_response["data"]["text"]
-            if "#stackjoin" in json_response['data']['text'].lower() or "#stackjoinadd" in json_response['data']['text'].lower():
+            if "#stackjoin" in json_response['data']['text'].lower():
                 print('activating dollar amount')
-                if tweet_message[tweet_message.find("#stackchainblockadd ")+20:].find(" ") == -1:
-                    dollar_amount = tweet_message[tweet_message.find("#stackchainblockadd ")+20:]
+                if tweet_message[tweet_message.find("#stackjoin")+10:].find(" ") == -1:
+                    dollar_amount = tweet_message[tweet_message.find("#stackjoin")+10:]
                 else:
-                    dollar_amount = tweet_message[tweet_message.find("#stackchainblockadd ")+20:][:tweet_message[tweet_message.find("#stackchainblockadd ")+20:].find(" ")]
+                    dollar_amount = tweet_message[tweet_message.find("#stackjoin")+10:][:tweet_message[tweet_message.find("#stackjoin")+10:].find(" ")]
+                print(f"the dollar amount is {dollar_amount}")
+            if "#stackjoinadd" in json_response['data']['text'].lower():
+                print('activating dollar amount')
+                if tweet_message[tweet_message.find("#stackjoinadd")+13:].find(" ") == -1:
+                    dollar_amount = tweet_message[tweet_message.find("#stackjoinadd")+13:]
+                else:
+                    dollar_amount = tweet_message[tweet_message.find("#stackjoinadd")+13:][:tweet_message[tweet_message.find("#stackjoinadd")+13:].find(" ")]
                 print(f"the dollar amount is {dollar_amount}")
             # checking if it's a stackjoin to store it
             if "#stackjoin" in json_response['data']['text'].lower() and "#stackjoinadd" not in json_response['data']['text'].lower():

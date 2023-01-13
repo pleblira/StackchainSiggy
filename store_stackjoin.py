@@ -127,8 +127,12 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
         create_or_update = "update"
         record_id = x['records'][0]['id']
 
-    # checking if block or stackjoin
+    # checking if block
     if stackjoin_tweets_or_blocks == "tblcwUsNLE3AecXpu": 
+        try:
+            block_height_or_tweet_id = int(block_height_or_tweet_id)
+        except:
+            block_height_or_tweet_id = 21000000
         if create_or_update == "create":
             print('creating')
             table.create({
@@ -162,11 +166,15 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
                 })
     # for stackjoins
     else:
+        try:
+            dollar_amount = float(dollar_amount)
+        except:
+            dollar_amount = 0.0
         if create_or_update == "create":
             print('creating')
             table.create({
                 "tweet_id": tweet_id,
-                "dollar_amount": float(dollar_amount),
+                "dollar_amount": dollar_amount,
                 "author_handle": author_handle,
                 "author_id": author_id,
                 "tweet_message": tweet_message_for_airtable_API,
@@ -183,7 +191,7 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
             table = Table(AIRTABLE_API_KEY, 'appiNbM9r6Zy7G2ux', "stackjoin_tweets")
             Table.update(table, record_id=record_id,fields={
                 "tweet_id": tweet_id,
-                "dollar_amount": float(dollar_amount),
+                "dollar_amount": dollar_amount,
                 "author_handle": author_handle,
                 "author_id": author_id,
                 "tweet_message": tweet_message_for_airtable_API,
