@@ -75,7 +75,7 @@ def get_stream(set):
             # checking if it's a stackjoin to store it
             if "#stackjoin" in json_response['data']['text'].lower() and "#stackjoinadd" not in json_response['data']['text'].lower():
                 print("found #stackjoin on tweet, activating store_stackjoin function")
-                store_stackjoin(json_response,tweet_datetimeISO=None, stackjoin_tweets_or_blocks = "stackjoin_tweets", block_height_or_tweet_id=json_response["data"]["id"], dollar_amount=dollar_amount)
+                store_stackjoin(json_response,tweet_datetimeISO=None, stackjoin_tweets_or_blocks = "stackjoin_tweets", block_height_or_tweet_id=json_response["data"]["id"], dollar_amount=0.0)
             else:
                 print("didn't find #stackjoin on tweet, so not activating the store_stackjoin function")
             if "#stackjoinadd" in json_response['data']['text'].lower():
