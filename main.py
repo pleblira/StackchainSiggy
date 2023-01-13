@@ -54,25 +54,34 @@ def get_stream(set):
             json_response = json.loads(response_line)
             print(f"\n\n\n\n\n--- --- --- INCOMING TWEET --- --- ---\n")
             print(f"the json dumps for json_response {json.dumps(json_response,indent=4)}\n\n")
+            # checking if dollar amount included on stackjoin
+            if "#stackjoin" in json_response['data']['text'].lower() or "#stackjoinadd" in json_response['data']['text'].lower():
+                if tweet_message[tweet_message.find("#stackchainblockadd ")+20:].find(" ") == -1:
+                    dollar_amount = tweet_message[tweet_message.find("#stackchainblockadd ")+20:]
+                else:
+                    dollar_amount = tweet_message[tweet_message.find("#stackchainblockadd ")+20:][:tweet_message[tweet_message.find("#stackchainblockadd ")+20:].find(" ")]
             # checking if it's a stackjoin to store it
             if "#stackjoin" in json_response['data']['text'].lower() and "#stackjoinadd" not in json_response['data']['text'].lower():
                 print("found #stackjoin on tweet, activating store_stackjoin function")
-                store_stackjoin(json_response,tweet_datetimeISO=None, stackjoin_tweets_or_blocks = "stackjoin_tweets", block_height_or_tweet_id=json_response["data"]["id"])
+                store_stackjoin(json_response,tweet_datetimeISO=None, stackjoin_tweets_or_blocks = "stackjoin_tweets", block_height_or_tweet_id=json_response["data"]["id"], dollar_amount=dollar_amount)
             else:
                 print("didn't find #stackjoin on tweet, so not activating the store_stackjoin function")
             tweet_id = json_response["data"]["id"]
+            tweet_message = json_response["data"]["text"]
             if "#stackjoinadd" in json_response['data']['text'].lower():
                 print("found #stackjoinadd on tweet, activating stackjoin_add function")
                 json_response_from_stackjoinadd = stackjoin_add(tweet_id)
                 if json_response_from_stackjoinadd != None:
-                    store_stackjoin(json_response_from_stackjoinadd[0],json_response_from_stackjoinadd[1],json_response_from_stackjoinadd[2], json_response_from_stackjoinadd[3], stackjoin_tweets_or_blocks = "stackjoin_tweets", block_height_or_tweet_id=json_response_from_stackjoinadd["data"]["id"])
-            elif "#stackchainblockadd" in json_response['data['text'].lower():
+                    store_stackjoin(json_response_from_stackjoinadd[0],json_response_from_stackjoinadd[1],json_response_from_stackjoinadd[2], json_response_from_stackjoinadd[3], stackjoin_tweets_or_blocks = "stackjoin_tweets", block_height_or_tweet_id=json_response_from_stackjoinadd["data"]["id"], dollar_amount=dollar_amount)
+            elif "#stackchainblockadd" in json_response['data']['text'].lower():
                 print("found #stackchainblockadd, initiate stackchain_block_store function")
-                block_height = json_response['data['text'][json_response['data['text'].find("#stackchainblockadd ")+20:][:json_response['data['text'][json_response['data['text'].find("#stackchainblockadd ")+20:].find(" ")]
-                stackchain_block_add(tweet_id, block_height,stackjoin_tweets_or_blocks = "blocks")
+                if tweet_message[tweet_message.find("#stackchainblockadd ")+20:].find(" ") == -1:
+                    block_height = tweet_message[tweet_message.find("#stackchainblockadd ")+20:]
+                else:
+                    block_height = tweet_message[tweet_message.find("#stackchainblockadd ")+20:][:tweet_message[tweet_message.find("#stackchainblockadd ")+20:].find(" ")]
+                stackchain_block_add(tweet_id, block_height)
             throttle_list = create_throttle_list(throttle_time)
             # print(f"json dumps for get_stream: {json.dumps(json_response, indent=4, sort_keys=True)}")
-            tweet_message = json_response["data"]["text"]
             # tweets have been disabled and bot has been operating silently. Disabled function below so it doesn't have to access AWS to pull tweet message list every time
             # tweet_message = get_tweet_message(json_response, tweet_message)
             # print(tweet_message)

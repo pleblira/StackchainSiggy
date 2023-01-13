@@ -69,7 +69,7 @@ def connect_to_endpoint(url):
 
     
 
-def stackchainblockadd(tweet_id, block_height):
+def stackchain_block_add(tweet_id, block_height):
     url = create_url(tweet_id)
     json_response_from_reply = connect_to_endpoint(url)
     for user in json_response_from_reply['includes']['users']:
@@ -156,12 +156,12 @@ def stackchainblockadd(tweet_id, block_height):
     # store_stackjoin_to_local(rebuilding_dict_to_make_it_compatible_with_store_stackjoin_function, tweet_datetimeISO)
 
     # store tweets to s3 and airtable
-    store_stackjoin(rebuilding_dict_to_make_it_compatible_with_store_stackjoin_function, tweet_datetimeISO, block_height_or_tweet_id=block_height)
+    store_stackjoin(rebuilding_dict_to_make_it_compatible_with_store_stackjoin_function, tweet_datetimeISO, block_height_or_tweet_id=block_height, stackjoin_tweets_or_blocks = "blocks")
 
 
-if __name__ == "__main__":
-    download_twitter_conversation(tweet_id)
-    # stackjoin_add("1598477437813260288")
+# if __name__ == "__main__":
+#     download_twitter_conversation(tweet_id)
+#     # stackjoin_add("1598477437813260288")
 
 
 
