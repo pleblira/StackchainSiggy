@@ -81,7 +81,7 @@ def get_stream(set):
                 print("found #stackjoinadd on tweet, activating stackjoin_add function")
                 json_response_from_stackjoinadd = stackjoin_add(tweet_id)
                 if json_response_from_stackjoinadd != None:
-                    store_stackjoin(json_response_from_stackjoinadd[0],json_response_from_stackjoinadd[1],json_response_from_stackjoinadd[2], json_response_from_stackjoinadd[3], stackjoin_tweets_or_blocks = "stackjoin_tweets", block_height_or_tweet_id=json_response_from_stackjoinadd["data"]["id"], dollar_amount=dollar_amount)
+                    store_stackjoin(json_response_from_stackjoinadd[0],json_response_from_stackjoinadd[1],json_response_from_stackjoinadd[2], json_response_from_stackjoinadd[3], stackjoin_tweets_or_blocks = "stackjoin_tweets", block_height_or_tweet_id=json_response_from_stackjoinadd[0]["data"]["id"], dollar_amount=dollar_amount)
             elif "#stackchainblockadd" in json_response['data']['text'].lower():
                 print("found #stackchainblockadd, initiate stackchain_block_store function")
                 if tweet_message[tweet_message.find("#stackchainblockadd ")+20:].find(" ") == -1:
