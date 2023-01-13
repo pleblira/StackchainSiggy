@@ -84,12 +84,14 @@ def get_stream(set):
                 if json_response_from_stackjoinadd != None:
                     store_stackjoin(json_response_from_stackjoinadd[0],json_response_from_stackjoinadd[1],json_response_from_stackjoinadd[2], json_response_from_stackjoinadd[3], stackjoin_tweets_or_blocks = "stackjoin_tweets", block_height_or_tweet_id=json_response_from_stackjoinadd[0]["data"]["id"], dollar_amount=dollar_amount)
             elif "#stackchainblockadd" in json_response['data']['text'].lower():
-                print("found #stackchainblockadd, initiate stackchain_block_store function")
+                print("found #stackchainblockadd, initiate stackchain_block_store function, will first verify if an authorized mempool operator")
                 if tweet_message[tweet_message.find("#stackchainblockadd ")+20:].find(" ") == -1:
                     block_height = tweet_message[tweet_message.find("#stackchainblockadd ")+20:]
                 else:
                     block_height = tweet_message[tweet_message.find("#stackchainblockadd ")+20:][:tweet_message[tweet_message.find("#stackchainblockadd ")+20:].find(" ")]
-                stackchain_block_add(tweet_id, block_height)
+                mempool_operators_author_ids = ["1224441209231249409", "1123895766", "710520505564958721", "1551606846972108800", "1262874395019579392", "1439679732891754504", "1064550114960781312", "9768732"]
+                if json_response['data']['author_id'] in mempool_operators_author_ids:
+                    stackchain_block_add(tweet_id, block_height)
             throttle_list = create_throttle_list(throttle_time)
             # print(f"json dumps for get_stream: {json.dumps(json_response, indent=4, sort_keys=True)}")
             # tweets have been disabled and bot has been operating silently. Disabled function below so it doesn't have to access AWS to pull tweet message list every time
