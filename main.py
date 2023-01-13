@@ -59,10 +59,10 @@ def get_stream(set):
             tweet_message = json_response["data"]["text"]
             if "#stackjoin" in json_response['data']['text'].lower():
                 print('activating dollar amount')
-                if tweet_message[tweet_message.find("#stackjoin")+10:].find(" ") == -1:
-                    dollar_amount = tweet_message[tweet_message.find("#stackjoin")+10:]
+                if tweet_message[tweet_message.find("#stackjoin")+11:].find(" ") == -1:
+                    dollar_amount = tweet_message[tweet_message.find("#stackjoin")+11:]
                 else:
-                    dollar_amount = tweet_message[tweet_message.find("#stackjoin")+10:][:tweet_message[tweet_message.find("#stackjoin")+10:].find(" ")]
+                    dollar_amount = tweet_message[tweet_message.find("#stackjoin")+11:][:tweet_message[tweet_message.find("#stackjoin")+11:].find(" ")]
                 print(f"the dollar amount is {dollar_amount}")
             if "#stackjoinadd" in json_response['data']['text'].lower():
                 print('activating dollar amount')
