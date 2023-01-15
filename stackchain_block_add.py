@@ -123,8 +123,8 @@ def stackchain_block_add(tweet_id, block_height):
     rebuilding_dict_to_make_it_compatible_with_store_stackjoin_function['data']['text'] = remove_mentions_from_tweet_message(rebuilding_dict_to_make_it_compatible_with_store_stackjoin_function['data']['text'])
 
     # checking if tweet includes quote tweet and downloading quoted tweet
-    if "referenced_tweets" in json_response_from_reply["data"][0]:
-        for tweet in json_response_from_reply["data"][0]['referenced_tweets']:
+    if "referenced_tweets" in json_response_from_tweet_to_stackjoinadd["data"][0]:
+        for tweet in json_response_from_tweet_to_stackjoinadd["data"][0]['referenced_tweets']:
             if tweet['type'] == "quoted":
                 quoted_tweet_id = tweet['id']
                 json_response_from_quoted_tweet = connect_to_endpoint(create_url(quoted_tweet_id))

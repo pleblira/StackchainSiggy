@@ -50,13 +50,21 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
             media_key = item['media_key']
             if item['type'] == "animated_gif":
                 print('found animated gif')
-                image_url = get_tweet_gif_url(tweet_id, media_key, "gif")
-                image_preview_url = get_tweet_gif_url(tweet_id, media_key,  "video")
+                if "preview_image_url" in item:
+                    image_url = get_tweet_gif_url(tweet_id, media_key, "gif", gif_url_if_already_included=item['preview_image_url'])
+                    image_preview_url = get_tweet_gif_url(tweet_id, media_key,  "video", gif_url_if_already_included=item['preview_image_url'])
+                else:
+                    image_url = get_tweet_gif_url(tweet_id, media_key, "gif")
+                    image_preview_url = get_tweet_gif_url(tweet_id, media_key,  "video")
                 print(f"the image URL is {image_url}")
             elif item['type'] == "video":
                 print('found video')
-                image_url = get_tweet_gif_url(tweet_id, media_key,  "video")
-                image_preview_url = get_tweet_gif_url(tweet_id, media_key,  "video")
+                if "preview_image_url" in item:
+                    image_url = get_tweet_gif_url(tweet_id, media_key, "video", gif_url_if_already_included=item['preview_image_url'])
+                    image_preview_url = get_tweet_gif_url(tweet_id, media_key,  "video", gif_url_if_already_included=item['preview_image_url'])
+                else:
+                    image_url = get_tweet_gif_url(tweet_id, media_key,  "video")
+                    image_preview_url = get_tweet_gif_url(tweet_id, media_key,  "video")
                 tweet_message += " [*Tweet has video attached (videos are unretrievable via API). Open original tweet to access video.]"
             else:
                 image_url = json_response["includes"]["media"][index]["url"]

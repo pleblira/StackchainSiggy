@@ -137,7 +137,7 @@ def get_stream(set):
                     except:
                         dollar_amount = 0.0
                     if dollar_amount != 0.0 and dollar_amount != "":
-                        dollar_amount_for_tweet_text = "$"+str(dollar_amount)+" "
+                        dollar_amount_for_tweet_text = f"${dollar_amount:.2f} "
                     tweet_message = f"🤖 {dollar_amount_for_tweet_text}Stackjoin Recorded to the Mempool ☑️"
                     tweepy_send_tweet(tweet_message, tweet_id, json_response)
                 if "#stackchainblockadd" in json_response['data']['text'].lower():
