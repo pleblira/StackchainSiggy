@@ -122,9 +122,10 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
             # print(f"the image_url_dict is: {image_url_dict}")
 
             # appending url and html tag for video files (new implementation)
-            image_url_dict.append(video_path)
-            img_src_dict.append(f"<a href=\"/{video_path}\" target=\"_blank\"><img src=\"/{s3_image_preview_path}\" style=\"max-width:100px;\"></a>")
-            # print(f"the image_url_dict is: {image_url_dict}")
+            if item['type'] == "video":
+                image_url_dict.append(video_path)
+                img_src_dict.append(f"<a href=\"/{video_path}\" target=\"_blank\"><img src=\"/{s3_image_preview_path}\" style=\"max-width:100px;\"></a>")
+                # print(f"the image_url_dict is: {image_url_dict}")
     else:
         print("no image")
     
