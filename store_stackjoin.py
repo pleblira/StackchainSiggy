@@ -8,6 +8,7 @@ from datetime import datetime
 import io
 from dotenv import load_dotenv, find_dotenv
 from pyairtable import Table
+from tvdl.tvdl_launcher import twitter_video_dl_launcher
 
 ENV_FILE = find_dotenv()
 if ENV_FILE:
@@ -47,6 +48,7 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
     airtable_gif_files_dict = []
     if "media" in json_response["includes"]:
         for index, item in enumerate(json_response['includes']['media']):
+            video_path = ""
             media_key = item['media_key']
             if item['type'] == "animated_gif":
                 print('found animated gif')
@@ -59,13 +61,20 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
                 print(f"the image URL is {image_url}")
             elif item['type'] == "video":
                 print('found video')
+                if not os.path.exists("stackjoin_tweet_images/"+tweet_id):
+                    print('folder not found, creating')
+                    os.makedirs("stackjoin_tweet_images/"+tweet_id)
+                video_filename_and_filetype = str(index+1)+"_video.mp4"
+                video_path = "stackjoin_tweet_images/"+tweet_id+"/"+video_filename_and_filetype
+                twitter_video_dl_launcher(f"https://www.twitter.com/{author_handle}/status/{tweet_id}",video_path)
                 if "preview_image_url" in item:
                     image_url = get_tweet_gif_url(tweet_id, media_key, "video", gif_url_if_already_included=item['preview_image_url'])
                     image_preview_url = get_tweet_gif_url(tweet_id, media_key,  "video", gif_url_if_already_included=item['preview_image_url'])
                 else:
                     image_url = get_tweet_gif_url(tweet_id, media_key,  "video")
                     image_preview_url = get_tweet_gif_url(tweet_id, media_key,  "video")
-                tweet_message += " [*Tweet has video attached (videos are unretrievable via API). Open original tweet to access video.]"
+                # videos are retrievable now after plugging in twitter_video_downloader!
+                # tweet_message += " [*Tweet has video attached (videos are unretrievable via API). Open original tweet to access video.]"
             else:
                 image_url = json_response["includes"]["media"][index]["url"]
                 image_preview_url = image_url
@@ -80,41 +89,54 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
             image_preview_filetype = image_preview_url.rsplit('/', 1)[1].rsplit('.', 1)[1]
             s3_upload = boto3.resource('s3',region_name='us-east-1',aws_access_key_id=AWS_ACCESS_KEY_ID,aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
 
-            s3_image_url = 'stackjoin_tweet_images/'+tweet_id+"/"+filename+"."+image_filetype
-            s3_image_preview_url = 'stackjoin_tweet_images/'+tweet_id+"/"+filename+"_thumbnail."+image_preview_filetype
+            s3_image_path = 'stackjoin_tweet_images/'+tweet_id+"/"+filename+"."+image_filetype
+            s3_image_preview_path = 'stackjoin_tweet_images/'+tweet_id+"/"+filename+"_thumbnail."+image_preview_filetype
             
             # uploading stackjoin image previews to S3 bucket
             print(f"the image preview URL is {image_preview_url}")
             r = requests.get(image_preview_url, allow_redirects=True)
-            s3_upload.Object('pleblira',s3_image_preview_url).put(Body=io.BytesIO(r.content), ACL="public-read",ContentType='image/jpeg')
+            s3_upload.Object('pleblira',s3_image_preview_path).put(Body=io.BytesIO(r.content), ACL="public-read",ContentType='image/jpeg')
 
             # uploading stackjoin images to S3 bucket
             print(f"the image URL is {image_url}")
             r = requests.get(image_url, allow_redirects=True)
-            s3_upload.Object('pleblira',s3_image_url).put(Body=io.BytesIO(r.content), ACL="public-read",ContentType='image/jpeg')
+            s3_upload.Object('pleblira',s3_image_path).put(Body=io.BytesIO(r.content), ACL="public-read",ContentType='image/jpeg')
+
+            # uploading downloaded video to S3
+            with open(video_path, 'rb') as f:
+                print('uploading to s3')
+                s3_upload = boto3.resource('s3',region_name='us-east-1',aws_access_key_id=AWS_ACCESS_KEY_ID,aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+                s3_upload.Object('pleblira',video_path).put(Body=f,ACL="public-read")
 
             # append to image_files_dict for later creating row on Airtable
             if item['type'] == "animated_gif":
                 airtable_gif_files_dict.append({"url":image_url,'filename':filename+"."+image_filetype})
             else:
                 airtable_image_files_dict.append({"url":image_url,'filename':filename+"."+image_filetype})
+            if video_path != "":
+                airtable_gif_files_dict.append({"url":"https://pleblira.s3.amazonaws.com/"+video_path,'filename':video_filename_and_filetype})
        
             # appending url and html tag for embedding to dictionaries which will then be added to the json on S3 and to the html table
             image_url_dict.append(image_url)
-            img_src_dict.append(f"<a href=\"/{s3_image_url}\" target=\"_blank\"><img src=\"/{s3_image_preview_url}\" style=\"max-width:100px;\"></a>")
-            print(f"the image_url_dict is: {image_url_dict}")
+            img_src_dict.append(f"<a href=\"/{s3_image_path}\" target=\"_blank\"><img src=\"/{s3_image_preview_path}\" style=\"max-width:100px;\"></a>")
+            # print(f"the image_url_dict is: {image_url_dict}")
+
+            # appending url and html tag for video files (new implementation)
+            image_url_dict.append(video_path)
+            img_src_dict.append(f"<a href=\"/{video_path}\" target=\"_blank\"><img src=\"/{s3_image_preview_path}\" style=\"max-width:100px;\"></a>")
+            # print(f"the image_url_dict is: {image_url_dict}")
     else:
         print("no image")
     
     # defining airtable_API_import_notes string
     airtable_API_import_notes = ""
-    if " [*Tweet has video attached (videos are unretrievable via API). Open original tweet to access video.]" in tweet_message:
-        airtable_API_import_notes = "[*Tweet has video attached (videos are unretrievable via API). Open original tweet to access video.]"
+    # if " [*Tweet has video attached (videos are unretrievable via API). Open original tweet to access video.]" in tweet_message:
+    #     airtable_API_import_notes = "[*Tweet has video attached (videos are unretrievable via API). Open original tweet to access video.]"
     if stackjoinadd_reporter != "0":
         airtable_API_import_notes += stackjoinadd_reporter
     if stackjoinadd_tweet_message != "":
         airtable_API_import_notes += stackjoinadd_tweet_message
-    tweet_message_for_airtable_API = tweet_message.replace(" [*Tweet has video attached (videos are unretrievable via API). Open original tweet to access video.]","")
+    # tweet_message_for_airtable_API = tweet_message.replace(" [*Tweet has video attached (videos are unretrievable via API). Open original tweet to access video.]","")
 
     # creating row or updating row on Airtable
     table = Table(AIRTABLE_API_KEY, "appiNbM9r6Zy7G2ux", stackjoin_tweets_or_blocks)
