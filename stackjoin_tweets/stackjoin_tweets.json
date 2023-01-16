@@ -2382,5 +2382,581 @@
         ],
         "tweet_timestamp": 1673747680,
         "tweet_datetimeISO": "2023-01-14T20:54:40"
+    },
+    {
+        "tweet_id": "1614381134745403394",
+        "author_handle": "__overflow_",
+        "author_id": "1123895766",
+        "tweet_message": "@AnthonyDessauer #Stackjoin 50",
+        "image_url_dict": [
+            "https://pbs.twimg.com/media/FmdvFd9XwAAOdz0.jpg",
+            "https://pbs.twimg.com/media/FmdvFeAXgAEeACb.jpg"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1614381134745403394/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614381134745403394/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>",
+            "<a href=\"/stackjoin_tweet_images/1614381134745403394/2_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614381134745403394/2_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": "1673733437",
+        "tweet_datetimeISO": "2023-01-14T21:57:17"
+    },
+    {
+        "tweet_id": "1609572601524879362",
+        "author_handle": "_Ben_in_Chicago",
+        "author_id": "291702034",
+        "tweet_message": "@kit_sats Happy New Year!\n\nBlock 2 of the #KitChain [stackjoinadd_reporter: GhostOfLoKo - ID 1595661363417849858",
+        "image_url_dict": [
+            "https://pbs.twimg.com/media/FlZZv9dWQAEsJDY.jpg"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1609572601524879362/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1609572601524879362/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": 1672586987,
+        "tweet_datetimeISO": "2023-01-01T15:29:47"
+    },
+    {
+        "tweet_id": "1609595712710508544",
+        "author_handle": "jc4466",
+        "author_id": "710520505564958721",
+        "tweet_message": "@_Ben_in_Chicago @kit_sats #KitChain Block 3\nHappy New Year!\nNice new year stacks! LESS FKN GO!! Bring this to the Tip!\n$21.72+$10= 31.72 Current Chain Value.\n(Swan doesn't let me buy in cents \ud83d\ude14) [stackjoinadd_reporter: GhostOfLoKo - ID 1595661363417849858",
+        "image_url_dict": [
+            "https://pbs.twimg.com/media/FlZuxR7aAAEmmXD.jpg"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1609595712710508544/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1609595712710508544/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": 1672592497,
+        "tweet_datetimeISO": "2023-01-01T17:01:37"
+    },
+    {
+        "tweet_id": "1609668384970489858",
+        "author_handle": "bamahodl",
+        "author_id": "1413225132059938818",
+        "tweet_message": "$21 #kitchain [stackjoinadd_reporter: GhostOfLoKo - ID 1595661363417849858",
+        "image_url_dict": [
+            "https://pbs.twimg.com/media/Flaw3OVWIAAjsVa.jpg",
+            "https://pbs.twimg.com/media/Flaw3OTWAAMD2PH.jpg"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1609668384970489858/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1609668384970489858/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>",
+            "<a href=\"/stackjoin_tweet_images/1609668384970489858/2_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1609668384970489858/2_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": 1672609823,
+        "tweet_datetimeISO": "2023-01-01T21:50:23"
+    },
+    {
+        "tweet_id": "1609710270200578048",
+        "author_handle": "hodlorado",
+        "author_id": "1430754174233288710",
+        "tweet_message": "#kitchain lfg \ud83d\udd25\ud83d\udd25\ud83d\udd25 [stackjoinadd_reporter: GhostOfLoKo - ID 1595661363417849858",
+        "image_url_dict": [
+            "https://pbs.twimg.com/media/FlbW9XqakAEZUMD.jpg"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1609710270200578048/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1609710270200578048/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": 1672619810,
+        "tweet_datetimeISO": "2023-01-02T00:36:50"
+    },
+    {
+        "tweet_id": "1611002817325539328",
+        "author_handle": "_Ben_in_Chicago",
+        "author_id": "291702034",
+        "tweet_message": "Here\u2019s another $25 for the #kitchain #sidechain #stackjoin [*Tweet has video attached (videos are unretrievable via API). Open original tweet to access video.] [stackjoinadd_reporter: GhostOfLoKo - ID 1595661363417849858",
+        "image_url_dict": [
+            "https://pbs.twimg.com/ext_tw_video_thumb/1611002799591915520/pu/img/SCxBcB19QtzwlFAd.jpg"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1611002817325539328/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1611002817325539328/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": 1672927977,
+        "tweet_datetimeISO": "2023-01-05T14:12:57"
+    },
+    {
+        "tweet_id": "1611007858472255488",
+        "author_handle": "DownwardDave",
+        "author_id": "31570847",
+        "tweet_message": "Thanks for the smash buy excuse. #kitchain #kitchaintip [stackjoinadd_reporter: GhostOfLoKo - ID 1595661363417849858",
+        "image_url_dict": [
+            "https://pbs.twimg.com/media/FltzG12akAA2cD1.jpg"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1611007858472255488/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1611007858472255488/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": 1672929179,
+        "tweet_datetimeISO": "2023-01-05T14:32:59"
+    },
+    {
+        "tweet_id": "1613943542681935873",
+        "author_handle": "_Ben_in_Chicago",
+        "author_id": "291702034",
+        "tweet_message": "A small $6.46 for the #kitchain #kitchaintip #sidechain [stackjoinadd_reporter: GhostOfLoKo - ID 1595661363417849858",
+        "image_url_dict": [
+            "https://pbs.twimg.com/media/FmXhGIKXkAM6rIc.jpg",
+            "https://video.twimg.com/tweet_video/FmXhGIKXoAEUYti.mp4"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1613943542681935873/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1613943542681935873/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>",
+            "<a href=\"/stackjoin_tweet_images/1613943542681935873/2_gif.mp4\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1613943542681935873/2_gif_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": 1673629100,
+        "tweet_datetimeISO": "2023-01-13T16:58:20"
+    },
+    {
+        "tweet_id": "1614062879690350593",
+        "author_handle": "scrappystacks",
+        "author_id": "1598139599611731968",
+        "tweet_message": "Block 2624\n#stackchain \n\u201cKeep squeezing it\u201d",
+        "image_url_dict": [
+            "https://pbs.twimg.com/media/FmZNoRYX0AA0M9A.jpg",
+            "https://pbs.twimg.com/media/FmZNoRaXEAM3nZ4.jpg",
+            "https://video.twimg.com/tweet_video/FmZNoS-WYAE0pDV.mp4"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1614062879690350593/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614062879690350593/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>",
+            "<a href=\"/stackjoin_tweet_images/1614062879690350593/2_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614062879690350593/2_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>",
+            "<a href=\"/stackjoin_tweet_images/1614062879690350593/3_gif.mp4\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614062879690350593/3_gif_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": 1673657553,
+        "tweet_datetimeISO": "2023-01-14T00:52:33"
+    },
+    {
+        "tweet_id": "1614009986904133632",
+        "author_handle": "anon_orator",
+        "author_id": "944124643287359489",
+        "tweet_message": "Block 2623 #stackchaintip #stackchain #gfy",
+        "image_url_dict": [
+            "https://pbs.twimg.com/media/FmYdhdlaEAAawXW.png",
+            "https://pbs.twimg.com/media/FmYdhdjaYAAnhBd.jpg"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1614009986904133632/1_image.png\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614009986904133632/1_image_thumbnail.png\" style=\"max-width:100px;\"></a>",
+            "<a href=\"/stackjoin_tweet_images/1614009986904133632/2_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614009986904133632/2_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": 1673644942,
+        "tweet_datetimeISO": "2023-01-13T21:22:22"
+    },
+    {
+        "tweet_id": "1613978745991270411",
+        "author_handle": "JohnOdetteMD",
+        "author_id": "2341284950",
+        "tweet_message": "Block 2622.  That\u2019s a lot of 2\u2019s.  Nice to see you back Mr. 19K.  Also GFY IMF, WEF, and Fed.",
+        "image_url_dict": [
+            "https://pbs.twimg.com/media/FmYBHVdXEAQPDyP.jpg"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1613978745991270411/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1613978745991270411/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": 1673637493,
+        "tweet_datetimeISO": "2023-01-13T19:18:13"
+    },
+    {
+        "tweet_id": "1613977612208214017",
+        "author_handle": "PeterAnsel9",
+        "author_id": "1404954265521508354",
+        "tweet_message": "Block 2621 \n\nThe Cleaner has arrived Hash in previous block good to 2620 and mislabeled. Previous Theta block 2611 deleted after multi-stack put in place\n\nThe Cleaner",
+        "image_url_dict": [
+            "https://video.twimg.com/tweet_video/FmYAEJTacAUTGJQ.mp4",
+            "https://pbs.twimg.com/media/FmYAEJRakAgnPk8.jpg"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1613977612208214017/1_gif.mp4\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1613977612208214017/1_gif_thumbnail.jpg\" style=\"max-width:100px;\"></a>",
+            "<a href=\"/stackjoin_tweet_images/1613977612208214017/2_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1613977612208214017/2_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": 1673637223,
+        "tweet_datetimeISO": "2023-01-13T19:13:43"
+    },
+    {
+        "tweet_id": "1614356800257818624",
+        "author_handle": "anon_orator",
+        "author_id": "944124643287359489",
+        "tweet_message": "Block 2629 #stackchain #stackchaintip #gfy #laughitupfuzzball #stackingonbillystip",
+        "image_url_dict": [
+            "https://pbs.twimg.com/media/FmdY9BVaMAA_R-H.png"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1614356800257818624/1_image.png\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614356800257818624/1_image_thumbnail.png\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": 1673727629,
+        "tweet_datetimeISO": "2023-01-14T20:20:29"
+    },
+    {
+        "tweet_id": "1614347673594908672",
+        "author_handle": "jileezie",
+        "author_id": "1287109027030347776",
+        "tweet_message": "Block 2628!!! #Billychain made it to da tip!!! My pingle feel so happy!!! Thanks to errybody who stacked on billychain!!! I love y\u2019all!!! Too many names to name but u know who u is. I hope my math be addin up. I homeschooled. #stackchaintip",
+        "image_url_dict": [
+            "https://pbs.twimg.com/media/FmdQnBhaMAAxrYl.jpg"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1614347673594908672/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614347673594908672/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": 1673725453,
+        "tweet_datetimeISO": "2023-01-14T19:44:13"
+    },
+    {
+        "tweet_id": "1614114941534879744",
+        "author_handle": "s256anon001",
+        "author_id": "1572756756433879040",
+        "tweet_message": "Block 2627 \nStackJoin Block- Receipts in Video\n\u201cStackChain\u2122\ufe0f Robbery of 2611\u201d\n#bitcoin #bullishAF #stackchainmeme Life on a Chain\nSpecial Guest @ICOffenderII [*Tweet has video attached (videos are unretrievable via API). Open original tweet to access video.]",
+        "image_url_dict": [
+            "https://pbs.twimg.com/ext_tw_video_thumb/1614114857707503616/pu/img/KfeQfcKBdrBxQ_oM.jpg"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1614114941534879744/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614114941534879744/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": 1673669965,
+        "tweet_datetimeISO": "2023-01-14T04:19:25"
+    },
+    {
+        "tweet_id": "1614075407858372608",
+        "author_handle": "sathoarder",
+        "author_id": "260934468",
+        "tweet_message": "Block 2626\n\nPhreaking awesome stacking guys!",
+        "image_url_dict": [
+            "https://pbs.twimg.com/media/FmZZBqJXoAEEQIM.jpg",
+            "https://pbs.twimg.com/media/FmZZBxJXgAQrHnA.jpg"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1614075407858372608/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614075407858372608/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>",
+            "<a href=\"/stackjoin_tweet_images/1614075407858372608/2_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614075407858372608/2_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": 1673660539,
+        "tweet_datetimeISO": "2023-01-14T01:42:19"
+    },
+    {
+        "tweet_id": "1614065528125153282",
+        "author_handle": "anon_orator",
+        "author_id": "944124643287359489",
+        "tweet_message": "",
+        "image_url_dict": [],
+        "img_src_dict": [],
+        "tweet_timestamp": 1673658184,
+        "tweet_datetimeISO": "2023-01-14T01:03:04"
+    },
+    {
+        "tweet_id": "1614413265374789634",
+        "author_handle": "LoKoBTC",
+        "author_id": "1551606846972108800",
+        "tweet_message": "#stackjoin TransAmChain",
+        "image_url_dict": [],
+        "img_src_dict": [],
+        "tweet_timestamp": "1673741097",
+        "tweet_datetimeISO": "2023-01-15T00:04:57"
+    },
+    {
+        "tweet_id": "1614413369213059072",
+        "author_handle": "LoKoBTC",
+        "author_id": "1551606846972108800",
+        "tweet_message": "#stackjoin AutismChain",
+        "image_url_dict": [],
+        "img_src_dict": [],
+        "tweet_timestamp": "1673741122",
+        "tweet_datetimeISO": "2023-01-15T00:05:22"
+    },
+    {
+        "tweet_id": "1614459908581122048",
+        "author_handle": "jusabitcoiner",
+        "author_id": "1584380164103872514",
+        "tweet_message": "#stackjoin test 123",
+        "image_url_dict": [],
+        "img_src_dict": [],
+        "tweet_timestamp": "1673752217",
+        "tweet_datetimeISO": "2023-01-15T03:10:17"
+    },
+    {
+        "tweet_id": "1614609548597157889",
+        "author_handle": "blacklotus99",
+        "author_id": "32853018",
+        "tweet_message": "#stackjoin another stack fully endorsed by #satoadshi #BeOG #Bitcoin #stackchain",
+        "image_url_dict": [
+            "https://pbs.twimg.com/media/Fmg-0ywX0AAo2wf.jpg",
+            "https://pbs.twimg.com/media/Fmg-0_CXgAAPzNS.jpg"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1614609548597157889/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614609548597157889/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>",
+            "<a href=\"/stackjoin_tweet_images/1614609548597157889/2_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614609548597157889/2_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": "1673787895",
+        "tweet_datetimeISO": "2023-01-15T13:04:55"
+    },
+    {
+        "tweet_id": "1614684686172803073",
+        "author_handle": "BrokenSystem20",
+        "author_id": "1262874395019579392",
+        "tweet_message": "#coffeechain, but Mules from Moscow!\n\n#stackjoin\u2026 Also, had to make the buy over 100k Sats!",
+        "image_url_dict": [],
+        "img_src_dict": [],
+        "tweet_timestamp": "1673805809",
+        "tweet_datetimeISO": "2023-01-15T18:03:29"
+    },
+    {
+        "tweet_id": "1614684791038775296",
+        "author_handle": "BrokenSystem20",
+        "author_id": "1262874395019579392",
+        "tweet_message": "#coffeechain, but Mules from Moscow!\n\n#stackjoin\u2026 Also, had to make the buy over 100k Sats!",
+        "image_url_dict": [
+            "https://pbs.twimg.com/media/FmiDQWzXgAQ4UNw.jpg",
+            "https://pbs.twimg.com/media/FmiDQW3X0AUholy.jpg",
+            "https://pbs.twimg.com/media/FmiDQWyWQAADgDf.jpg"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1614684791038775296/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614684791038775296/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>",
+            "<a href=\"/stackjoin_tweet_images/1614684791038775296/2_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614684791038775296/2_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>",
+            "<a href=\"/stackjoin_tweet_images/1614684791038775296/3_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614684791038775296/3_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": "1673805834",
+        "tweet_datetimeISO": "2023-01-15T18:03:54"
+    },
+    {
+        "tweet_id": "1614685323186798593",
+        "author_handle": "BrokenSystem20",
+        "author_id": "1262874395019579392",
+        "tweet_message": "@PeterMaxi21 Beautiful!\n\nWould you like to #stackjoin this to build a #stackchain block?\n\nfighting the WEF 2030 agenda one #bitcoin purchase at a time!",
+        "image_url_dict": [],
+        "img_src_dict": [],
+        "tweet_timestamp": "1673805963",
+        "tweet_datetimeISO": "2023-01-15T18:06:03"
+    },
+    {
+        "tweet_id": "1614714262315843585",
+        "author_handle": "gfyhodl",
+        "author_id": "1614320077246980098",
+        "tweet_message": "#stackjoin 37 USD",
+        "image_url_dict": [
+            "https://pbs.twimg.com/media/FmieEGJWIAIo8pN.jpg"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1614714262315843585/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614714262315843585/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": "1673812860",
+        "tweet_datetimeISO": "2023-01-15T20:01:00"
+    },
+    {
+        "tweet_id": "1614717770540670979",
+        "author_handle": "gfyhodl",
+        "author_id": "1614320077246980098",
+        "tweet_message": "#stackjoin 141 USD",
+        "image_url_dict": [
+            "https://pbs.twimg.com/media/FmihQVFXoAMKaRM.jpg"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1614717770540670979/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614717770540670979/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": "1673813696",
+        "tweet_datetimeISO": "2023-01-15T20:14:56"
+    },
+    {
+        "tweet_id": "1614065528125153282",
+        "author_handle": "anon_orator",
+        "author_id": "944124643287359489",
+        "tweet_message": "\n\n[Quoted Tweet:\n@anon_orator - ID 944124643287359489\nTweet ID: 1614064550223151104]\n\nBlock 2625 #stackchain #stackchaintip",
+        "image_url_dict": [
+            "https://pbs.twimg.com/media/FmZPJuyaEAIezWJ.png",
+            "https://pbs.twimg.com/media/FmZPJuxaYAEtVne.png"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1614065528125153282/1_image.png\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614065528125153282/1_image_thumbnail.png\" style=\"max-width:100px;\"></a>",
+            "<a href=\"/stackjoin_tweet_images/1614065528125153282/2_image.png\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614065528125153282/2_image_thumbnail.png\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": 1673658184,
+        "tweet_datetimeISO": "2023-01-14T01:03:04"
+    },
+    {
+        "tweet_id": "1613906025962430470",
+        "author_handle": "PeterAnsel9",
+        "author_id": "1404954265521508354",
+        "tweet_message": "Block 2610 \nThe Jason Lowery Block. If listen to this and you don\u2019t immediately buy #Bitcoin, I don\u2019t know what to say dude, your fucking stupid\n\n[Quoted Tweet:\n@BTC_MS_THRIVING - ID 1287055236520185857\nTweet ID: 1613743179253022721]\n\nTonight\u2018s meetup with @JasonPLowery \ud83d\ude4f\ud83c\udffb far surpassed expectations The video will be posted shortly or please listen below.\nSpecial thanks to @BJdichter @FossGregfoss \n @gwhoffmeister \nand the entire @BTC_Mass team. We\u2019re only getting started \ud83d\udd25\ud83d\udc47\ud83c\udffb",
+        "image_url_dict": [
+            "https://pbs.twimg.com/media/FmW--YLaMAA6wMD.jpg"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1613906025962430470/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1613906025962430470/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": 1673620156,
+        "tweet_datetimeISO": "2023-01-13T14:29:16"
+    },
+    {
+        "tweet_id": "1613703603792773122",
+        "author_handle": "scrappystacks",
+        "author_id": "1598139599611731968",
+        "tweet_message": "Block 2608 \n#Stackchain\n\u201cThe price is the least interesting part about Bitcoin. Nothing but a distraction.\u201d",
+        "image_url_dict": [
+            "https://pbs.twimg.com/media/FmUG30rXoAYTMd_.jpg",
+            "https://pbs.twimg.com/media/FmUG30oXwAEKCod.jpg"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1613703603792773122/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1613703603792773122/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>",
+            "<a href=\"/stackjoin_tweet_images/1613703603792773122/2_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1613703603792773122/2_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": 1673571894,
+        "tweet_datetimeISO": "2023-01-13T01:04:54"
+    },
+    {
+        "tweet_id": "1614429572526936064",
+        "author_handle": "LoKoBTC",
+        "author_id": "1551606846972108800",
+        "tweet_message": "Block 2630 SCCleanUp\n\nDed Sidechains To Tip -- Since \u2615\ufe0fChain is SJs now -- FIFO-like method used\nNo Tag Since Chains Died (&amp; too Much) \ud83e\udd37 \n\nDed Chains:\nAustim: https://t.co/WxI6wAFkTV\nTransAm: https://t.co/g5PcSvt3gI\nKit: https://t.co/ET51ql4Nc4\n&amp; @bitman013\ud83d\udd25 on B2612-19 \n&amp;\u2615\ufe0fSJs\n\n[Quoted Tweet:\n@_Ben_in_Chicago - ID 291702034\nTweet ID: 1613943542681935873]\n\nA small $6.46 for the #kitchain #kitchaintip #sidechain",
+        "image_url_dict": [
+            "https://pbs.twimg.com/media/FmebDGJWQAANvU_.jpg",
+            "https://pbs.twimg.com/media/FmXhGIKXkAM6rIc.jpg",
+            "https://video.twimg.com/tweet_video/FmXhGIKXoAEUYti.mp4"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1614429572526936064/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614429572526936064/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>",
+            "<a href=\"/stackjoin_tweet_images/1614429572526936064/2_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614429572526936064/2_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>",
+            "<a href=\"/stackjoin_tweet_images/1614429572526936064/3_gif.mp4\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614429572526936064/3_gif_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": 1673744979,
+        "tweet_datetimeISO": "2023-01-15T01:09:39"
+    },
+    {
+        "tweet_id": "1614347673594908672",
+        "author_handle": "jileezie",
+        "author_id": "1287109027030347776",
+        "tweet_message": "Block 2628!!! #Billychain made it to da tip!!! My pingle feel so happy!!! Thanks to errybody who stacked on billychain!!! I love y\u2019all!!! Too many names to name but u know who u is. I hope my math be addin up. I homeschooled. #stackchaintip\n\n[Quoted Tweet:\n@DocHodllday - ID 1569538322967699456\nTweet ID: 1613664295304175623]\n\nBring #billychain to the tip @jileezie, we have the hash:\n5 to 37 is $693\nhttps://t.co/yG2PLbb9ob\nBoat $520 https://t.co/DwJGKD1QHg\nChewy $100 https://t.co/IlFHEKrkxS\n+ this $1301.  Total $2614.",
+        "image_url_dict": [
+            "https://pbs.twimg.com/media/FmdQnBhaMAAxrYl.jpg",
+            "https://pbs.twimg.com/media/FmTiyDBXEAMNJll.jpg"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1614347673594908672/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614347673594908672/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>",
+            "<a href=\"/stackjoin_tweet_images/1614347673594908672/2_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614347673594908672/2_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": 1673725453,
+        "tweet_datetimeISO": "2023-01-14T19:44:13"
+    },
+    {
+        "tweet_id": "1614722164724477952",
+        "author_handle": "BadWolfHODL",
+        "author_id": "1275968148001312769",
+        "tweet_message": "#stackjoin",
+        "image_url_dict": [
+            "https://pbs.twimg.com/media/FmilPmtaMAEpdiq.jpg",
+            "https://video.twimg.com/tweet_video/FmilPmsaUAECanU.mp4"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1614722164724477952/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614722164724477952/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>",
+            "<a href=\"/stackjoin_tweet_images/1614722164724477952/2_gif.mp4\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614722164724477952/2_gif_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": "1673814744",
+        "tweet_datetimeISO": "2023-01-15T20:32:24"
+    },
+    {
+        "tweet_id": "1614744613147021312",
+        "author_handle": "jc4466",
+        "author_id": "710520505564958721",
+        "tweet_message": "#stackjoin $33",
+        "image_url_dict": [
+            "https://pbs.twimg.com/media/Fmi5qt0aEAMOJP8.jpg"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1614744613147021312/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614744613147021312/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": "1673820097",
+        "tweet_datetimeISO": "2023-01-15T22:01:37"
+    },
+    {
+        "tweet_id": "1614767239042940939",
+        "author_handle": "jusabitcoiner",
+        "author_id": "1584380164103872514",
+        "tweet_message": "#stackjoin without video testing 2",
+        "image_url_dict": [],
+        "img_src_dict": [],
+        "tweet_timestamp": "1673825490",
+        "tweet_datetimeISO": "2023-01-15T23:31:30"
+    },
+    {
+        "tweet_id": "1614767526994497544",
+        "author_handle": "jusabitcoiner",
+        "author_id": "1584380164103872514",
+        "tweet_message": "#stackjoin with video testing 123",
+        "image_url_dict": [
+            "https://pbs.twimg.com/ext_tw_video_thumb/1614767351437697027/pu/img/7Pv_BD12dhhRHdc-.jpg",
+            "stackjoin_tweet_images/1614767526994497544/1_video.mp4"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1614767526994497544/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614767526994497544/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>",
+            "<a href=\"/stackjoin_tweet_images/1614767526994497544/1_video.mp4\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614767526994497544/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": "1673825560",
+        "tweet_datetimeISO": "2023-01-15T23:32:40"
+    },
+    {
+        "tweet_id": "1614768835843719168",
+        "author_handle": "pleblira",
+        "author_id": "1439679732891754504",
+        "tweet_message": "#stackchainblockadd 2632 test to see if it saves video on tweet",
+        "image_url_dict": [
+            "https://pbs.twimg.com/ext_tw_video_thumb/1614768579554967552/pu/img/PBuhsPthvaUva7sG.jpg",
+            "stackjoin_tweet_images/1614768835843719168/1_video.mp4"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1614768835843719168/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614768835843719168/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>",
+            "<a href=\"/stackjoin_tweet_images/1614768835843719168/1_video.mp4\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614768835843719168/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": 1673825866,
+        "tweet_datetimeISO": "2023-01-15T23:37:46"
+    },
+    {
+        "tweet_id": "1614822793413070848",
+        "author_handle": "jusabitcoiner",
+        "author_id": "1584380164103872514",
+        "tweet_message": "#stackjoin test with video 2",
+        "image_url_dict": [
+            "https://pbs.twimg.com/ext_tw_video_thumb/1614822245213376512/pu/img/Go9iDul4oFduPXJC.jpg",
+            "stackjoin_tweet_images/1614822793413070848/1_video.mp4"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1614822793413070848/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614822793413070848/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>",
+            "<a href=\"/stackjoin_tweet_images/1614822793413070848/1_video.mp4\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614822793413070848/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": "1673838736",
+        "tweet_datetimeISO": "2023-01-16T03:12:16"
+    },
+    {
+        "tweet_id": "1614827906878050304",
+        "author_handle": "RPGMoney303",
+        "author_id": "57741743",
+        "tweet_message": "Block 2632 overage to #Stackjoin",
+        "image_url_dict": [
+            "https://pbs.twimg.com/media/FmkFaxRakAEuB_W.jpg"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1614827906878050304/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614827906878050304/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": "1673839955",
+        "tweet_datetimeISO": "2023-01-16T03:32:35"
+    },
+    {
+        "tweet_id": "1614822793413070848",
+        "author_handle": "jusabitcoiner",
+        "author_id": "1584380164103872514",
+        "tweet_message": "#stackjoin test with video 2 [stackjoinadd_reporter: jusabitcoiner - ID 1584380164103872514",
+        "image_url_dict": [
+            "https://pbs.twimg.com/ext_tw_video_thumb/1614822245213376512/pu/img/Go9iDul4oFduPXJC.jpg",
+            "stackjoin_tweet_images/1614822793413070848/1_video.mp4"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1614822793413070848/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614822793413070848/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>",
+            "<a href=\"/stackjoin_tweet_images/1614822793413070848/1_video.mp4\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614822793413070848/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": 1673838730,
+        "tweet_datetimeISO": "2023-01-16T03:12:10"
+    },
+    {
+        "tweet_id": "1614822793413070848",
+        "author_handle": "jusabitcoiner",
+        "author_id": "1584380164103872514",
+        "tweet_message": "#stackjoin test with video 2 [stackjoinadd_reporter: jusabitcoiner - ID 1584380164103872514",
+        "image_url_dict": [
+            "https://pbs.twimg.com/ext_tw_video_thumb/1614822245213376512/pu/img/Go9iDul4oFduPXJC.jpg",
+            "stackjoin_tweet_images/1614822793413070848/1_video.mp4"
+        ],
+        "img_src_dict": [
+            "<a href=\"/stackjoin_tweet_images/1614822793413070848/1_image.jpg\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614822793413070848/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>",
+            "<a href=\"/stackjoin_tweet_images/1614822793413070848/1_video.mp4\" target=\"_blank\"><img src=\"/stackjoin_tweet_images/1614822793413070848/1_image_thumbnail.jpg\" style=\"max-width:100px;\"></a>"
+        ],
+        "tweet_timestamp": 1673856730,
+        "tweet_datetimeISO": "2023-01-16T03:12:10"
     }
 ]

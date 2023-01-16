@@ -53,7 +53,7 @@ def get_stream(set):
         if response_line:
             json_response = json.loads(response_line)
             print(f"\n\n\n\n\n--- --- --- INCOMING TWEET --- --- ---\n")
-            print(f"the json dumps for json_response {json.dumps(json_response,indent=4)}\n\n")
+            # print(f"the json dumps for json_response {json.dumps(json_response,indent=4)}\n\n")
             # checking if dollar amount included on stackjoin
             tweet_id = json_response["data"]["id"]
             tweet_message = json_response["data"]["text"]
@@ -149,7 +149,6 @@ def get_stream(set):
             else:
                 print("tweet won't go out and cleaning up recent interactions was skipped")
                 print("tweet replies for hashtags besides #stackjoin and #stackjoinadd have been disabled for now")
-
 
 def main():
     rules = get_rules(bearer_oauth)
