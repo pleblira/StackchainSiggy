@@ -103,10 +103,11 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
             s3_upload.Object('pleblira',s3_image_path).put(Body=io.BytesIO(r.content), ACL="public-read",ContentType='image/jpeg')
 
             # uploading downloaded video to S3
-            with open(video_path, 'rb') as f:
-                print('uploading to s3')
-                s3_upload = boto3.resource('s3',region_name='us-east-1',aws_access_key_id=AWS_ACCESS_KEY_ID,aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
-                s3_upload.Object('pleblira',video_path).put(Body=f,ACL="public-read")
+            if item['type'] == "video":
+                with open(video_path, 'rb') as f:
+                    print('uploading to s3')
+                    s3_upload = boto3.resource('s3',region_name='us-east-1',aws_access_key_id=AWS_ACCESS_KEY_ID,aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+                    s3_upload.Object('pleblira',video_path).put(Body=f,ACL="public-read")
 
             # append to image_files_dict for later creating row on Airtable
             if item['type'] == "animated_gif":
