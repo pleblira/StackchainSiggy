@@ -206,7 +206,7 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
     else:
         try:
             dollar_amount = float(dollar_amount.replace("$",""))
-            stackjoinadd_reporters = ["AnthonyDessauer", "__overflow_", "jc4466", "LoKoBTC", "BrokenSystem20", "pleblira", "phathodl", "derekmross"]
+            stackjoinadd_reporters = ["AnthonyDessauer", "__overflow_", "jc4466", "LoKoBTC", "BrokenSystem20", "pleblira", "phathodl", "derekmross", "GhostOfLoko"]
             if stackjoinadd_reporter[25:25+stackjoinadd_reporter[25:].find(" ")] not in stackjoinadd_reporters:
                 print("stackjoin reporter not found in list")
                 dollar_amount = 0.0
