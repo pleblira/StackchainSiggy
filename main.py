@@ -29,9 +29,9 @@ access_token_secret = os.environ.get("ACCESS_TOKEN_SECRET")
 bearer_token = os.environ.get("BEARER_TOKEN")
 
 throttle_time = 60
-response = ""
 
 def get_stream(set):
+    response = ""
     while response == "":
         start = time.time()
         APP_REDEPLOY_TIME = 30
