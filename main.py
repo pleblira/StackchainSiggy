@@ -31,6 +31,7 @@ bearer_token = os.environ.get("BEARER_TOKEN")
 throttle_time = 60
 
 def get_stream(set):
+    response = ""
     while response == "":
         start = time.time()
         APP_REDEPLOY_TIME = 30
