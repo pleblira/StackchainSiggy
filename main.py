@@ -31,6 +31,7 @@ bearer_token = os.environ.get("BEARER_TOKEN")
 throttle_time = 60
 
 def get_stream(set):
+    # response = "a"
     response = requests.get(
         "https://api.twitter.com/2/tweets/search/stream?expansions=author_id,attachments.media_keys&media.fields=url", auth=bearer_oauth, stream=True,
     )
@@ -49,6 +50,7 @@ def get_stream(set):
                 response.status_code, response.text
             )
         )
+    
     for response_line in response.iter_lines():
         if response_line:
             json_response = json.loads(response_line)
@@ -149,6 +151,16 @@ def get_stream(set):
             else:
                 print("tweet won't go out and cleaning up recent interactions was skipped")
                 print("tweet replies for hashtags besides #stackjoin and #stackjoinadd have been disabled for now")
+        # response = ""
+        # print(f"response is |||{response}|||")
+        # start = time.time()
+        # print(start)
+        # while response == "":
+        #     print('idle time')
+        #     APP_REDEPLOY_TIME = 30
+        #     if time.time() > start + APP_REDEPLOY_TIME:
+        #         print('quitting app')
+        #         quit()
 
 def main():
     rules = get_rules(bearer_oauth)
