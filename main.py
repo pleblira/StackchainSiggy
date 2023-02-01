@@ -31,6 +31,8 @@ bearer_token = os.environ.get("BEARER_TOKEN")
 throttle_time = 60
 
 def get_stream(set):
+    number_of_idle_pings = 0
+    print(f"number of idle pings: {number_of_idle_pings}")
     response = requests.get(
         "https://api.twitter.com/2/tweets/search/stream?expansions=author_id,attachments.media_keys&media.fields=url", auth=bearer_oauth, stream=True,
     )
@@ -52,6 +54,8 @@ def get_stream(set):
     
     for response_line in response.iter_lines():
         if response_line:
+            number_of_idle_pings = 0
+            print('setting number of idle pings to 0')
             json_response = json.loads(response_line)
             print(f"\n\n\n\n\n--- --- --- INCOMING TWEET --- --- ---\n")
             # print(f"the json dumps for json_response {json.dumps(json_response,indent=4)}\n\n")
@@ -150,7 +154,12 @@ def get_stream(set):
             else:
                 print("tweet won't go out and cleaning up recent interactions was skipped")
                 print("tweet replies for hashtags besides #stackjoin and #stackjoinadd have been disabled for now")
-    response = ""
+        response = f"response is |||{response}|||"
+        number_of_idle_pings += 1
+        print(f'number of idle pings: {number_of_idle_pings}')
+        if number_of_idle_pings == 4:
+            print('quitting')
+            quit()
 
 def main():
     rules = get_rules(bearer_oauth)
