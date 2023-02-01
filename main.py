@@ -32,7 +32,7 @@ throttle_time = 60
 
 def get_stream(set):
     number_of_idle_pings = 0
-    print(f"number of idle pings: {number_of_idle_pings}")
+    # print(f"number of idle pings: {number_of_idle_pings}")
     response = requests.get(
         "https://api.twitter.com/2/tweets/search/stream?expansions=author_id,attachments.media_keys&media.fields=url", auth=bearer_oauth, stream=True,
     )
@@ -155,7 +155,7 @@ def get_stream(set):
                 print("tweet won't go out and cleaning up recent interactions was skipped")
                 print("tweet replies for hashtags besides #stackjoin and #stackjoinadd have been disabled for now")
         number_of_idle_pings += 1
-        if number_of_idle_pings % 5 == 0:
+        if number_of_idle_pings % 10 == 0:
             print(f'number of idle pings: {number_of_idle_pings}')
         if number_of_idle_pings == 100:
             print('quitting')
