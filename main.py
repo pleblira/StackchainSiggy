@@ -157,7 +157,7 @@ def get_stream(set):
         response = f"response is |||{response}|||"
         number_of_idle_pings += 1
         print(f'number of idle pings: {number_of_idle_pings}')
-        if number_of_idle_pings == 4:
+        if number_of_idle_pings == 100:
             print('quitting')
             quit()
 
