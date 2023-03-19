@@ -157,9 +157,9 @@ def get_stream(set):
         number_of_idle_pings += 1
         if number_of_idle_pings % 10 == 0:
             print(f'number of idle pings: {number_of_idle_pings}')
-        if number_of_idle_pings == 100:
-            print('quitting')
-            quit()
+        # if number_of_idle_pings == 100:
+        #     print('quitting')
+        #     quit()
 
 def main():
     rules = get_rules(bearer_oauth)
