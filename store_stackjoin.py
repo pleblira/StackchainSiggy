@@ -66,7 +66,7 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
                     os.makedirs("stackjoin_tweet_images/"+tweet_id)
                 video_filename_and_filetype = str(index+1)+"_video.mp4"
                 video_path = "stackjoin_tweet_images/"+tweet_id+"/"+video_filename_and_filetype
-                twitter_video_dl_launcher(f"https://www.twitter.com/{author_handle}/status/{tweet_id}",video_path)
+                # twitter_video_dl_launcher(f"https://www.twitter.com/{author_handle}/status/{tweet_id}",video_path)
                 if "preview_image_url" in item:
                     image_url = get_tweet_gif_url(tweet_id, media_key, "video", gif_url_if_already_included=item['preview_image_url'])
                     image_preview_url = get_tweet_gif_url(tweet_id, media_key,  "video", gif_url_if_already_included=item['preview_image_url'])
@@ -103,19 +103,19 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
             s3_upload.Object('pleblira',s3_image_path).put(Body=io.BytesIO(r.content), ACL="public-read",ContentType='image/jpeg')
 
             # uploading downloaded video to S3
-            if item['type'] == "video":
-                with open(video_path, 'rb') as f:
-                    print('uploading to s3')
-                    s3_upload = boto3.resource('s3',region_name='us-east-1',aws_access_key_id=AWS_ACCESS_KEY_ID,aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
-                    s3_upload.Object('pleblira',video_path).put(Body=f,ACL="public-read")
+            # if item['type'] == "video":
+            #     with open(video_path, 'rb') as f:
+            #         print('uploading to s3')
+            #         s3_upload = boto3.resource('s3',region_name='us-east-1',aws_access_key_id=AWS_ACCESS_KEY_ID,aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+            #         s3_upload.Object('pleblira',video_path).put(Body=f,ACL="public-read")
 
             # append to image_files_dict for later creating row on Airtable
             if item['type'] == "animated_gif":
                 airtable_gif_files_dict.append({"url":image_url,'filename':filename+"."+image_filetype})
             else:
                 airtable_image_files_dict.append({"url":image_url,'filename':filename+"."+image_filetype})
-            if video_path != "":
-                airtable_gif_files_dict.append({"url":"https://pleblira.s3.amazonaws.com/"+video_path,'filename':video_filename_and_filetype})
+            # if video_path != "":
+            #     airtable_gif_files_dict.append({"url":"https://pleblira.s3.amazonaws.com/"+video_path,'filename':video_filename_and_filetype})
        
             # appending url and html tag for embedding to dictionaries which will then be added to the json on S3 and to the html table
             image_url_dict.append(image_url)
@@ -123,9 +123,9 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
             # print(f"the image_url_dict is: {image_url_dict}")
 
             # appending url and html tag for video files (new implementation)
-            if item['type'] == "video":
-                image_url_dict.append(video_path)
-                img_src_dict.append(f"<a href=\"/{video_path}\" target=\"_blank\"><img src=\"/{s3_image_preview_path}\" style=\"max-width:100px;\"></a>")
+            # if item['type'] == "video":
+            #     image_url_dict.append(video_path)
+            #     img_src_dict.append(f"<a href=\"/{video_path}\" target=\"_blank\"><img src=\"/{s3_image_preview_path}\" style=\"max-width:100px;\"></a>")
                 # print(f"the image_url_dict is: {image_url_dict}")
     else:
         print("no image")
