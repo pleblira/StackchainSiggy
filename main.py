@@ -160,6 +160,7 @@ def get_stream(set):
         # if number_of_idle_pings == 100:
         #     print('quitting')
         #     quit()
+        # 
 
 def main():
     rules = get_rules(bearer_oauth)
