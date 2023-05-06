@@ -38,8 +38,8 @@ def get_stream(set):
     )
     print(response.status_code)
     if response.status_code == 429:
-        print("ran into error 429 so waiting for 60 seconds for connection to be reset")
-        time.sleep(60)
+        print("ran into error 429 so waiting for 30 seconds for connection to be reset")
+        time.sleep(30)
         raise Exception(
             "Cannot get stream (HTTP {}): {}".format(
                 response.status_code, response.text
@@ -57,11 +57,21 @@ def get_stream(set):
             number_of_idle_pings = 0
             print('setting number of idle pings to 0')
             json_response = json.loads(response_line)
+            print('json_response received')
             print(f"\n\n\n\n\n--- --- --- INCOMING TWEET --- --- ---\n")
             # print(f"the json dumps for json_response {json.dumps(json_response,indent=4)}\n\n")
             # checking if dollar amount included on stackjoin
-            tweet_id = json_response["data"]["id"]
-            tweet_message = json_response["data"]["text"]
+            if "data" not in json.loads(response_line):
+                print("no data in response line")
+                tweet_id = 1
+                tweet_message = ""
+                tweet_n = True
+                tweet_y = False
+            else:
+                tweet_id = json_response["data"]["id"]
+                tweet_message = json_response["data"]["text"]
+                tweet_n = False
+                tweet_y = False
             # making dollar_amount function only for #stackjoinadd
             # if "#stackjoin" in json_response['data']['text'].lower() and "#stackjoinadd" not in json_response['data']['text'].lower():
             #     print('activating dollar amount')
@@ -69,7 +79,7 @@ def get_stream(set):
             #         dollar_amount = tweet_message[tweet_message.find("#stackjoin")+11:]
             #     else:
             #         dollar_amount = tweet_message[tweet_message.find("#stackjoin")+11:][:tweet_message[tweet_message.find("#stackjoin")+11:].find(" ")]
-            #     print(f"the dollar amount is {dollar_amount}")
+            #         print(f"the dollar amount is {dollar_amount}")
             if "#stackjoinadd" in json_response['data']['text'].lower():
                 print('activating dollar amount')
                 if tweet_message[tweet_message.find("#stackjoinadd")+14:].find(" ") == -1:
@@ -103,8 +113,11 @@ def get_stream(set):
             # tweet_message = get_tweet_message(json_response, tweet_message)
             # print(tweet_message)
 
-            tweet_y = False
-            tweet_n = False
+            if tweet_n == True: 
+                tweet_y = False
+            else:
+                tweet_y = False
+                tweet_n = False
 
             while not tweet_y and not tweet_n:
                 # additional check for hashtag on text of the tweet (the API has been serving replies to the actual hashtag tweet, which does not apply)
