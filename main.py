@@ -12,7 +12,6 @@ from create_throttle_list import *
 from clean_up_and_save_recent_interactions import *
 from get_exclude_reply_user_ids import *
 from tweepy_send_tweet import *
-from get_tweet_message import *
 from store_stackjoin import *
 from stackjoin_add import *
 from stackchain_block_add import *
@@ -110,7 +109,6 @@ def get_stream(set):
             throttle_list = create_throttle_list(throttle_time)
             # print(f"json dumps for get_stream: {json.dumps(json_response, indent=4, sort_keys=True)}")
             # tweets have been disabled and bot has been operating silently. Disabled function below so it doesn't have to access AWS to pull tweet message list every time
-            # tweet_message = get_tweet_message(json_response, tweet_message)
             # print(tweet_message)
 
             if tweet_n == True: 

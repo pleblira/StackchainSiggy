@@ -250,7 +250,7 @@ def store_stackjoin(json_response, tweet_datetimeISO, stackjoinadd_reporter = "0
     if stackjoinadd_reporter != "0":
         tweet_message += stackjoinadd_reporter
 
-    #downloading stackjoin_tweets.json from s3 to appen tweet information
+    #downloading stackjoin_tweets.json from s3 to append tweet information
     boto3.client('s3').download_file('pleblira', 'stackjoin_tweets/stackjoin_tweets.json', 'stackjoin_tweets/stackjoin_tweets.json')
 
     with open("stackjoin_tweets/stackjoin_tweets.json",'r+') as openfile:
