@@ -154,7 +154,7 @@ def get_stream(set):
                         dollar_amount = 0.0
                     if dollar_amount != 0.0 and dollar_amount != "":
                         dollar_amount_for_tweet_text = f"${dollar_amount:.2f} "
-                    tweet_message = f"🤖 {dollar_amount_for_tweet_text}Stackjoin Recorded to the Mempool ☑️"
+                    tweet_message = f"🤖 {dollar_amount_for_tweet_text}Stackjoin Recorded to the Mempool ☑️\n\n[LNmarketcapbot here subbing for Siggy, hoping Elon doesn't nuke our last free API accounts for good 😰]"
                     tweepy_send_tweet(tweet_message, tweet_id, json_response)
                 if "#stackchainblockadd" in json_response['data']['text'].lower():
                     print("tweet will go out")
