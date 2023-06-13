@@ -27,6 +27,8 @@ access_token = os.environ.get("ACCESS_TOKEN")
 access_token_secret = os.environ.get("ACCESS_TOKEN_SECRET")
 bearer_token = os.environ.get("BEARER_TOKEN")
 
+print(f"consumer key hint: {consumer_key[:6]}")
+
 throttle_time = 60
 
 def get_stream(set):
